@@ -3,8 +3,9 @@
   **1.vueuse**
     这是 GitHub 上星最多的库之一，拥有超过 12.8k 颗星，这是一组基于组合式 API 的实用函数库。
     它的初衷就是将一切原本并不支持响应式的 JS API 变得支持响应式，省去程序员自己写相关代码。
+
+    [![github](https://raw.githubusercontent.com/vueuse/vueuse/main/packages/public/logo-vertical.png#gh-light-mode-only)](https://github.com/vueuse/vueuse)
     
-    [![GitHub](https://raw.githubusercontent.com/vueuse/vueuse/main/packages/public/logo-vertical.png#gh-light-mode-only)](https://github.com/vueuse/vueuse)
 
 
 <!--
