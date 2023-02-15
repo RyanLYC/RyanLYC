@@ -5,7 +5,7 @@
 - 🔭 JavaScript
 - 🌱 HTML
 - 👯 CSS
-- 🤔 
+- 🤔 VUE
 - 💬 
 - 📫 
 - 😄 

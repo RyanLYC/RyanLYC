@@ -1,0 +1,73 @@
+<!-- vue2.0 ES5: Object.defineProperty 
+弊端： 
+1.需要把原始数据克隆一遍。 
+2. 需要分别给对象中每个属性设置监听。开始的时候定义一个Object 没有添加属性，
+后面修改就不会改变。需要使用vue.set/ this.$set 强制更新。 -->
+
+<!-- <body>
+  姓名：<span id="spanName"></span>
+  <br />
+  <input type="text" id="inpName" />
+  <script>
+    let obj = {
+      name: "",
+    };
+
+    let newObj = {
+      ...obj,
+    };
+
+    Object.defineProperty(obj, "name", {
+      get() {
+        return newObj.name;
+      },
+
+      set(val) {
+        newObj.name = val;
+
+        observe();
+      },
+    });
+
+    function observe() {
+      spanName.innerHTML = newObj.name;
+    }
+
+    inpName.oninput = function () {
+      obj.name = this.value;
+    };
+  </script>
+</body> -->
+
+<!-- vue3.0 ES6：Proxy  -->
+<body>
+  姓名：<span id="spanName"></span>
+  <br />
+  <input type="text" id="inpName" />
+
+  <script>
+    let obj = {
+      name: "",
+    };
+
+    obj = new Proxy(obj, {
+      get(target, prop) {
+        return target[prop];
+      },
+
+      set(target, prop, value) {
+        target[prop] = value;
+
+        observe();
+      },
+    });
+
+    function observe() {
+      spanName.innerHTML = obj.name;
+    }
+
+    inpName.oninput = function () {
+      obj.name = this.value;
+    };
+  </script>
+</body>
