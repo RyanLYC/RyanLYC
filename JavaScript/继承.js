@@ -1,0 +1,66 @@
+/**1.原型链继承 */
+function SuperType() {
+  this.colors = ["red", "blue", "green"];
+}
+
+function SubType() {}
+
+// 继承 SuperType
+SubType.prototype = new SuperType();
+
+let instance1 = new SubType();
+instance1.colors.push("black");
+console.log(instance1.colors); // "red,blue,green,black"
+
+let instance2 = new SubType();
+console.log(instance2.colors); // "red,blue,green,black"
+
+/**2.盗用构造函数 */
+function SuperType() {
+  this.colors = ["red", "blue", "green"];
+}
+
+function SubType() {
+  //  继承 SuperType
+  SuperType.call(this);
+}
+
+let instance3 = new SubType();
+instance3.colors.push("black");
+console.log(instance3.colors); // "red,blue,green,black"
+
+let instance4 = new SubType();
+console.log(instance4.colors); // "red,blue,green"
+
+/**3.组合继承 */
+function SuperType(name) {
+  this.name = name;
+  this.colors = ["red", "blue", "green"];
+}
+
+SuperType.prototype.sayName = function () {
+  console.log(this.name);
+};
+
+function SubType(name, age) {
+  // 继承属性
+  SuperType.call(this, name);
+  this.age = age;
+}
+
+// 继承方法
+SubType.prototype = new SuperType();
+SubType.prototype.sayAge = function () {
+  console.log(this.age);
+};
+
+let instance5 = new SubType("Nicholas", 29);
+instance5.colors.push("black");
+console.log(instance5.colors); // "red,blue,green,black
+instance5.sayName(); // "Nicholas";
+instance5.sayAge(); // 29
+
+let instance6 = new SubType("Greg", 27);
+console.log(instance6.colors); // "red,blue,green"
+instance6.sayName(); // "Greg";
+instance6.sayAge(); // 27
