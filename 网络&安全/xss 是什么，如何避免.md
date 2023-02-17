@@ -13,7 +13,7 @@ XSS攻击可以分为3类：反射型（非持久型）、存储型（持久型�
 
 假设有一个网站lalala存在XSS漏洞，网址是http://www.lalala.com。然后有一天小A在邮件里发现一封邮件，内容是一张你懂得图片然后配下面的标签。
 
-![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/反射型.png)
+![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/fsx.png)
 
 小A好奇啊，然后就点了进去，如果在此之前小A登录过lalala网站，那么他的Cookie就被盗走了。
 
@@ -24,7 +24,7 @@ XSS攻击可以分为3类：反射型（非持久型）、存储型（持久型�
 存储型 XSS 会把用户输入的数据 "存储" 在服务器端，当浏览器请求数据时，脚本从服务器上传回并执行。这种 XSS 攻击具有很强的稳定性。
 
 比较常见的一个场景是攻击者在社区或论坛上写下一篇包含恶意 JavaScript 代码的文章或评论，文章或评论发表后，所有访问该文章或评论的用户，都会在他们的浏览器中执行这段恶意的 JavaScript 代码。
-![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/存储型.png)
+![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/ccx.png)
 
 ### 基于DOM
 基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。
