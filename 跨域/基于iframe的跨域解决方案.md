@@ -70,7 +70,7 @@ b.html为中间代理页，与a.html同域，内容为空。
 同样的，a.html和b.html是同域的，都是http://localhost:3000;而c.html是http://localhost:4000  
 ```xml
  // a.html
-  <iframe src="http://localhost:4000/c.html#iloveyou"></iframe>
+  <iframe src="http://localhost:4000/c.html#777"></iframe>
   <script>
     window.onhashchange = function () { //检测hash的变化
       console.log(location.hash);
