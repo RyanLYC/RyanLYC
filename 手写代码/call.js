@@ -5,7 +5,7 @@ Function.prototype._call = function (ctx, ...args) {
   const obj = ctx ? Object(ctx) : window;
   const key = Symbol();
   obj[key] = this;
-  const result = obj[key](args);
+  const result = obj[key](...args);
   delete obj[key];
   return result;
 };
