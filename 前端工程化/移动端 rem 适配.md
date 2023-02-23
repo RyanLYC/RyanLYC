@@ -1,5 +1,5 @@
 ##  Vite+Vue3+VantUI移动端应用项目搭建
-### Vant 官方提供方案
+### Vant 官方提供方案  https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage
 
 ```shell
 yarn add lib-flexible -S # 用于设置rem基准值
