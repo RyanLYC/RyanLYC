@@ -1,3 +1,6 @@
+##  Vite+Vue3+VantUI移动端应用项目搭建
+### Vant 官方提供方案
+
 ```shell
 yarn add lib-flexible -S # 用于设置rem基准值
 yarn add postcss-pxtorem -D # postcss插件，用于将单位转为rem
