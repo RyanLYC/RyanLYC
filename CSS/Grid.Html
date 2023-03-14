@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      .wrapper,
+      .wrapper-1,
+      .wrapper-2,
+      .wrapper-3,
+      .wrapper-4,
+      .wrapper-5,
+      .wrapper-6 {
+        margin: 50px;
+      }
+      .wrapper {
+        display: grid;
+        /*  声明了三列，宽度分别为 200px 100px 200px */
+        grid-template-columns: 200px 100px 200px;
+        /*  声明行间距和列间距  */
+        grid-gap: 5px;
+        /*  声明了两行，行高分别为 50px 50px  */
+        grid-template-rows: 50px 50px;
+      }
+      .wrapper-1 {
+        display: grid;
+        grid-template-columns: 200px 100px 200px;
+        grid-gap: 5px;
+        /*  2行，而且行高都为 50px  */
+        grid-template-rows: repeat(2, 50px);
+      }
+      .wrapper-2 {
+        display: grid;
+        /* auto-fill 关键字：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格。 */
+        grid-template-columns: repeat(auto-fill, 200px);
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .wrapper-3 {
+        margin: 40px;
+        display: grid;
+        /* fr 关键字：Grid 布局还引入了一个另外的长度单位来帮助我们创建灵活的网格轨道。fr 单位代表网格容器中可用空间的一等份。 宽度分别为剩余宽度的 1/3 和 2/3*/
+        grid-template-columns: 200px 1fr 2fr;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .wrapper-4 {
+        display: grid;
+        /* minmax() 函数：我们有时候想给网格元素一个最小和最大的尺寸，minmax() 函数产生一个长度范围，表示长度就在这个范围之中都可以应用到网格项目中。它接受两个参数，分别为最小值和最大值。  第三个列宽最少也是要 300px，但是最大不能大于第一第二列宽的两倍。*/
+        grid-template-columns: 1fr 1fr minmax(300px, 2fr);
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .wrapper-5 {
+        display: grid;
+        /* auto 关键字：由浏览器决定长度。 */
+        grid-template-columns: 100px auto 100px;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .wrapper-6 {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        /* 行间距 列间距 分别设置 */
+        grid-gap: 5px 20px;
+        grid-auto-rows: 50px;
+      }
+      .one {
+        background: #19caad;
+      }
+      .two {
+        background: #8cc7b5;
+      }
+      .three {
+        background: #d1ba74;
+      }
+      .four {
+        background: #bee7e9;
+      }
+      .five {
+        background: #e6ceac;
+      }
+      .six {
+        background: #ecad9e;
+      }
+      .seven {
+        background: #beedc7;
+      }
+      .eight {
+        background: #f4606c;
+      }
+      .nine {
+        background: #a0eee1;
+      }
+      .item {
+        text-align: center;
+        font-size: 200%;
+        color: #fff;
+      }
+
+      .sidebar {
+        /* grid-area 属性指定项目放在哪一个区域 */
+        grid-area: sidebar;
+      }
+
+      .content {
+        grid-area: content;
+      }
+
+      .header {
+        grid-area: header;
+      }
+
+      .wrapper-7 {
+        margin: 50px;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 120px 120px 120px;
+        /* grid-template-areas 属性用于定义区域，一个区域由一个或者多个单元格组成，一般这个属性跟网格元素的 grid-area 一起使用*/
+        grid-template-areas:
+          ". header  header"
+          "sidebar content content";
+        background-color: #fff;
+        color: #444;
+      }
+      .box {
+        background-color: #444;
+        color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 150%;
+      }
+
+      .header {
+        background-color: #999;
+      }
+      .wrapper-8 {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        grid-auto-flow: row;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .wrapper-9 {
+        display: grid;
+        grid-auto-columns: 100px;
+        grid-auto-flow: column;
+        grid-gap: 5px;
+        grid-template-rows: 50px 50px;
+      }
+      .wrapper-10 {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        grid-auto-flow: row dense;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+      }
+      .six-2 {
+        grid-column-start: span 2;
+        background: #ecad9e;
+      }
+      .wrapper-justify,
+      .wrapper-justify-1,
+      .wrapper-justify-2,
+      .wrapper-justify-3 {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+        justify-items: start;
+      }
+      .wrapper-justify-1 {
+        justify-items: end;
+      }
+      .wrapper-justify-2 {
+        justify-items: center;
+      }
+      .wrapper-justify-3 {
+        justify-items: stretch;
+      }
+      .wrapper-content,
+      .wrapper-content-1,
+      .wrapper-content-2,
+      .wrapper-content-3,
+      .wrapper-content-4,
+      .wrapper-content-5,
+      .wrapper-content-6 {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+        justify-content: start;
+      }
+      .wrapper-content-1 {
+        justify-content: end;
+      }
+      .wrapper-content-2 {
+        justify-content: center;
+      }
+      .wrapper-content-3 {
+        justify-content: space-around;
+      }
+      .wrapper-content-4 {
+        justify-content: space-between;
+      }
+      .wrapper-content-5 {
+        justify-content: space-evenly;
+      }
+      .wrapper-content-6 {
+        justify-content: stretch;
+      }
+      .wrapper-11 {
+        margin: 50px;
+        display: grid;
+        grid-template-columns: 200px 100px;
+        /*  只设置了两行，但实际的数量会超出两行，超出的行高会以 grid-auto-rows 算 */
+        grid-template-rows: 100px 100px;
+        grid-gap: 10px 20px;
+        grid-auto-rows: 50px;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        grid-auto-rows: minmax(100px, auto);
+      }
+      .content-one {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background: #19caad;
+      }
+      .content-two {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        /* z-index: 1; */
+        background: #8cc7b5;
+      }
+      .content-three {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        background: #d1ba74;
+      }
+      .content-four {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        background: #bee7e9;
+      }
+      .content-five {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        background: #e6ceac;
+      }
+      .content-six {
+        grid-column: 3;
+        grid-row: 4;
+        background: #ecad9e;
+      }
+      .justify-wrap,
+      .justify-wrap-1,
+      .justify-wrap-2,
+      .justify-wrap-3 {
+        display: grid;
+        grid-template-columns: 100px 200px 100px;
+        grid-gap: 5px;
+        grid-auto-rows: 50px;
+        /*   justify-self: start; */
+      }
+      .actual {
+        margin: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px 20px;
+        grid-auto-rows: 50px;
+      }
+      .actual-1,
+      .actual-2 {
+        margin: 50px;
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, 200px); */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px 20px;
+        grid-auto-rows: 50px;
+      }
+      .item--3 {
+        grid-column-start: span 3;
+      }
+      .actual-2 {
+        grid-auto-flow: row dense;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>固定列宽和行高</h1>
+    <div class="wrapper">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+    </div>
+
+    <h1>repeat 函数</h1>
+    <div class="wrapper-1">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+    </div>
+
+    <h1>auto-fill 关键字</h1>
+    <div class="wrapper-2">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>fr 关键字</h1>
+    <div class="wrapper-3">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>minmax 函数</h1>
+    <div class="wrapper-4">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>auto 关键字</h1>
+    <div class="wrapper-5">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>两列布局</h1>
+    <div class="wrapper-6">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>grid-area 以及 grid-template-areas</h1>
+    <div class="wrapper-7">
+      <div class="box header">Header</div>
+      <div class="box sidebar">Sidebar</div>
+      <div class="box content">Content</div>
+    </div>
+
+    <h1>grid-auto-flow</h1>
+    <h1>先行后列</h1>
+    <div class="wrapper-8">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six-2 item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>先列后行</h1>
+    <div class="wrapper-9">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six-2 item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>先行后列：dense</h1>
+    <div class="wrapper-10">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six-2 item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      justify-items 属性设置单元格内容的水平位置（左中右），align-items
+      属性设置单元格的垂直位置（上中下）
+    </h1>
+    <h1>justify-items: start;</h1>
+    <div class="wrapper-justify">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-items: end;</h1>
+    <div class="wrapper-justify-1">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-items: center;</h1>
+    <div class="wrapper-justify-2">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-items: stretch;</h1>
+    <div class="wrapper-justify-3">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      justify-content
+      属性是整个内容区域在容器里面的水平位置（左中右），align-content
+      属性是整个内容区域的垂直位置（上中下）。它们都有如下的属性值。
+    </h1>
+    <h1>justify-content: start;</h1>
+    <div class="wrapper-content">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-content: end;</h1>
+    <div class="wrapper-content-1">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-content: center;</h1>
+    <div class="wrapper-content-2">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      justify-content:
+      space-around;每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍
+    </h1>
+    <div class="wrapper-content-3">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      justify-content:space-between;
+      项目与项目的间隔相等，项目与容器边框之间没有间隔
+    </h1>
+
+    <div class="wrapper-content-4">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      justify-content:
+      space-evenly;项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔
+    </h1>
+    <div class="wrapper-content-5">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>justify-content: stretch;项目大小没有指定时，拉伸占据整个网格容器</h1>
+    <div class="wrapper-content-6">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>grid-auto-columns 属性和 grid-auto-rows 属性</h1>
+    <h1>
+      只设置了两行，但实际的数量会超出两行，超出的行高会以 grid-auto-rows 算
+    </h1>
+    <div class="wrapper-11">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+
+    <h1>
+      grid-column-start 属性、grid-column-end 属性、grid-row-start
+      属性以及grid-row-end 属性
+    </h1>
+    <div>
+      <div>
+        可以指定网格项目所在的四个边框，分别定位在哪根网格线，从而指定项目的位置
+      </div>
+      <div>grid-column-start 属性：左边框所在的垂直网格线</div>
+      <div>
+        grid-column-end 属性：右边框所在的垂直网格线 grid-row-start
+        属性：上边框所在的水平网格线
+      </div>
+      <div>grid-row-end 属性：下边框所在的水平网格线</div>
+    </div>
+    <div class="content">
+      <div class="content-one">One</div>
+      <div class="content-two">Two</div>
+      <div class="content-three">Three</div>
+      <div class="content-four">Four</div>
+      <div class="content-five">Five</div>
+      <div class="content-six">Six</div>
+    </div>
+
+    <h1>justify-self 属性、align-self 属性以及 place-self 属性</h1>
+    <h1>justify-self: start;</h1>
+    <div class="justify-wrap">
+      <div class="one item-0">One</div>
+      <div class="two item-0">Two</div>
+      <div class="three item-0">Three</div>
+      <div class="four item-0">Four</div>
+      <div class="five item-0">Five</div>
+      <div class="six item-0">Six</div>
+      <div class="seven item-0">Seven</div>
+      <div class="eight item-0">eight</div>
+      <div class="nine item-0">Nine</div>
+    </div>
+
+    <h1>justify-self: end;</h1>
+    <div class="justify-wrap-1">
+      <div class="one item-1">One</div>
+      <div class="two item-1">Two</div>
+      <div class="three item-1">Three</div>
+      <div class="four item-1">Four</div>
+      <div class="five item-1">Five</div>
+      <div class="six item-1">Six</div>
+      <div class="seven item-1">Seven</div>
+      <div class="eight item-1">eight</div>
+      <div class="nine item-1">Nine</div>
+    </div>
+
+    <h1>justify-self: center;</h1>
+    <div class="justify-wrap-2">
+      <div class="one item-2">One</div>
+      <div class="two item-2">Two</div>
+      <div class="three item-2">Three</div>
+      <div class="four item-2">Four</div>
+      <div class="five item-2">Five</div>
+      <div class="six item-2">Six</div>
+      <div class="seven item-2">Seven</div>
+      <div class="eight item-2">eight</div>
+      <div class="nine item-2">Nine</div>
+    </div>
+
+    <h1>justify-self: stretch;</h1>
+    <div class="justify-wrap-3">
+      <div class="one item-3">One</div>
+      <div class="two item-3">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item-3">Four</div>
+      <div class="five item-3">Five</div>
+      <div class="six item-3">Six</div>
+      <div class="seven item-3">Seven</div>
+      <div class="eight item-3">eight</div>
+      <div class="nine item-3">Nine</div>
+    </div>
+
+    <h1>justify-self 属性、align-self 属性以及 place-self 属性</h1>
+    <div>
+      <div>
+        justify-self 属性设置单元格内容的水平位置（左中右），跟 justify-items
+        属性的用法完全一致，但只作用于单个项目
+      </div>
+      <div>
+        align-self
+        属性设置单元格内容的垂直位置（上中下），跟align-items属性的用法完全一致，也是只作用于单个项目
+      </div>
+      <div>place-self 是设置 align-self 和 justify-self 的简写形式</div>
+    </div>
+
+    <h1>Grid 实战——实现响应式布局</h1>
+    <h2>fr 实现等分响应式</h2>
+    <div class="actual">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+    <h2>repeat+auto-fit+minmax 去掉右侧空白</h2>
+    <div class="actual-1">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+    <h2>repeat+auto-fit+minmax-span-dense 解决空缺问题</h2>
+    <div class="actual-2">
+      <div class="one item">One</div>
+      <div class="two item">Two</div>
+      <div class="three item--3">Three</div>
+      <div class="four item">Four</div>
+      <div class="five item">Five</div>
+      <div class="six item">Six</div>
+      <div class="seven item">Seven</div>
+      <div class="eight item">eight</div>
+      <div class="nine item">Nine</div>
+    </div>
+  </body>
+</html>
