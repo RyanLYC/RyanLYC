@@ -8,35 +8,182 @@ Koa2 使用 ES7 的 Async/Await，Koa2 使用的是一个洋葱模型，它的�
 ### 中间件实现机制
 在 Koa 中多个异步中间件进行组合，其中一个最核心的实现是 koa-compse 这个组件，下面一步一步的进行实现。  
 
-从三个函数开始做为例子开始封装一个类似于 koa-compse 的组合函数：
+
 ```javascript
-async function f1(ctx, next) {
-  console.log('f1 start ->');
-  await next();
-  console.log('f1 end <-');
-}
+const Koa = require('koa');
+const app = new Koa();
 
-async function f2(ctx, next) {
-  console.log('f2 start ->');
-  await next();
-  console.log('f2 end <-');
-}
+// logger
+app.use(async (ctx, next) => {
+    console.log('第一层 - 开始')
+    await next();
+    const rt = ctx.response.get('X-Response-Time');
+    console.log(`${ctx.method} ----------- ${ctx.url} ----------- ${rt}`);
+    console.log('第一层 - 结束')
+});
 
-async function f3(ctx) {
-  console.log('f3 service...');
-}
-use(f1);
-use(f2);
-use(f3);
+// x-response-time
+app.use(async (ctx, next) => {
+    console.log('第二层 - 开始')
+    const start = Date.now();
+    await next();
+    const ms = Date.now() - start;
+    ctx.set('X-Response-Time', `${ms}ms`);
+    console.log('第二层 - 结束')
+});
+
+// response
+app.use(async ctx => {
+    console.log('第三层 - 开始')
+    ctx.body = 'Hello World';
+    console.log('第三层 - 结束')
+});
+
+app.listen(3000);
 // 输出结果
-// f1 start ->
-// f2 start ->
-// f3 service...
-// f2 end <-
-// f1 end <-
+第一层 - 开始
+第二层 - 开始
+第三层 - 开始
+第三层 - 结束
+第二层 - 结束
+打印第一次执行的结果： GET -------- /text ------ 4ms
+第一层 - 结束
+```
+koa2 中间件应用
+```javaScript
+//loginCheck.js: 
+module.exports = async (ctx, next) => {
+    if (ctx.session.username) {
+        // 登陆成功，需执行 await next()，以继续执行下一步
+        await next()
+        return
+    }
+    // 登陆失败，禁止继续执行，所以不需要执行 next()
+    ctx.body = {
+        code: -1,
+        msg: '登陆失败'
+    }
+}
+//在删除操作中使用 loginCheck.js :
+router.post('/delete', loginCheck, async (ctx, next) => {
+    const author = ctx.session.username
+    const id = ctx.query.id
+    // handleDelete() 是一个处理删除的方法，返回一个 promise
+    const result = await handleDelete(id, author)
+
+    if (result) {
+        ctx.body = {
+            code: 0,
+            msg: '删除成功'
+        }
+    } else {
+        ctx.body = {
+            code: -1,
+            msg: '删除失败'
+        }
+    }
+})
 ```
 
+
 `Express` 中间件实现是基于 Callback 回调函数同步的，它不会去等待异步（Promise）完成，加上异步操作，顺序就被改变了。
+
+与 koa2 中间件不同的是，express中间件一个接一个的顺序执行, 通常会将 response 响应写在最后一个中间件中
+
+主要特点：
+
+app.use 用来注册中间件
+遇到 http 请求，根据 path 和 method 判断触发哪些中间件
+实现 next 机制，即上一个中间件会通过 next 触发下一个中间件
+
+```javascript
+const express = require('express')
+
+const app = express()
+
+app.use((req, res, next) => {
+    console.log('第一层 - 开始')
+    setTimeout(() => {
+        next()
+    }, 0)
+    console.log('第一层 - 结束')
+})
+
+app.use((req, res, next) => {
+    console.log('第二层 - 开始')
+    setTimeout(() => {
+        next()
+    }, 0)
+    console.log('第二层 - 结束')
+})
+
+app.use('/api', (req, res, next) => {
+    console.log('第三层 - 开始')
+    res.json({
+        code: 0
+    })
+    console.log('第三层 - 结束')
+})
+
+app.listen(3000, () => {
+    console.log('server is running on port 3000')
+})
+
+//  输出结果
+第一层 - 开始
+第一层 - 结束
+第二层 - 开始
+第二层 - 结束
+第三层 - 开始
+第三层 - 结束
+
+
+
+// 去掉 setTimeout
+const express = require('express')
+
+const app = express()
+
+app.use((req, res, next) => {
+    console.log('第一层 - 开始')
+    next()
+    console.log('第一层 - 结束')
+})
+
+app.use((req, res, next) => {
+    console.log('第二层 - 开始')
+    next()
+    console.log('第二层 - 结束')
+})
+
+app.use('/api', (req, res, next) => {
+    console.log('第三层 - 开始')
+    res.json({
+        code: 0
+    })
+    console.log('第三层 - 结束')
+})
+
+app.listen(3000, () => {
+    console.log('server is running on port 3000')
+})
+
+// 输出
+第一层 - 开始
+第二层 - 开始
+第三层 - 开始
+第三层 - 结束
+第二层 - 结束
+第一层 - 结束
+
+/**
+ * 可见，express 的中间件也可以形成“洋葱圈”模型，但是一般在express中不会这么做，因为 express 的 response 一般在最后一个中间件，所以其它中间件 next() 后的代码影响不到最终结果。
+ */
+/**
+ * 可以看到express的中间件的原理就是一层层函数的嵌套，虽然最内部的函数调用res.send结束的请求，但是程序依然在运行。并且这个运行的结果也类似koa的洋葱。这里面有一点需要注意，express结束请求是在最内部函数。这很重要。
+ */
+```
+
 
 ### 响应机制
 
