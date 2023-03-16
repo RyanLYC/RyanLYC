@@ -64,3 +64,36 @@ let instance6 = new SubType("Greg", 27);
 console.log(instance6.colors); // "red,blue,green"
 instance6.sayName(); // "Greg";
 instance6.sayAge(); // 27
+
+/** 4.组合继承优化 */
+function SuperType(name) {
+  this.name = name;
+  this.colors = ["red", "blue", "green"];
+}
+
+SuperType.prototype.sayName = function () {
+  console.log(this.name);
+};
+
+function SubType(name, age) {
+  // 继承属性
+  SuperType.call(this, name);
+  this.age = age;
+}
+
+// 继承方法
+SubType.prototype = Object.create(SuperType.prototype);
+SubType.prototype.sayAge = function () {
+  console.log(this.age);
+};
+
+let instance7 = new SubType("Nicholas", 29);
+instance7.colors.push("black");
+console.log(instance7.colors); // "red,blue,green,black
+instance7.sayName(); // "Nicholas";
+instance7.sayAge(); // 29
+
+let instance8 = new SubType("Greg", 27);
+console.log(instance8.colors); // "red,blue,green"
+instance8.sayName(); // "Greg";
+instance8.sayAge(); // 27
