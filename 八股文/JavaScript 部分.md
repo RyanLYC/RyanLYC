@@ -225,8 +225,55 @@ function getJSON(url) {
 尾调用指的是函数的最后一步调用另一个函数。代码执行是基于执行栈的，所以当在一个函数里调用另一个函数时，会保留当前的执行上下文，然后再新建另外一个执行上下文加入栈中。使用尾调用的话，因为已经是函数的最后一步，所以这时可以不必再保留当前的执行上下文，从而节省了内存，这就是尾调用优化。但是 ES6 的尾调用优
 化只在严格模式下开启，正常模式是无效的.
 
-### 22. ES6 模块与 CommonJS 模块有什么异同?
+#### 22. ES6 模块与 CommonJS 模块有什么异同?
 * ES6 Module 和 CommonJS 模块的区别：   
 CommonJS 是对模块的浅拷⻉，ES6 Module 是对模块的引⽤，即 ES6 Module 只存只读，不能改变其值，也就是指针指向不能变，类似 const；import 的接⼝是 read-only（只读状态），不能修改其变量值。 即不能修改其变量的指针指向，但可以改变变量内部指针指向，可以对commonJS 对重新赋值（改变指针指向），但是对 ES6 Module 赋值会编译报错。
 * ES6 Module 和 CommonJS 模块的共同点：   
 CommonJS 和 ES6 Module 都可以对引⼊的对象进⾏赋值，即对对象内部属性的值进⾏改变。
+
+#### 23. for...in 和 for...of 的区别
+for…of 是 ES6 新增的遍历方式，允许遍历一个含有 iterator 接口的数据结构（数组、对象等）并且返回各项的值，和 ES3 中的 for…in 的区别如：  
+for…of 遍历获取的是对象的键值，for…in 获取的是对象的键名；    
+for… in 会遍历对象的整个原型链，性能非常差不推荐使用，而for … of 只遍历当前对象不会遍历原型链；  
+对于数组的遍历，for…in 会返回数组中所有可枚举的属性(包括原型链上可枚举的属性)，for…of 只返回数组的下标对应的属性值；   
+总结：for...in 循环主要是为了遍历对象而生，不适用于遍历数组；for...of 循环可以用来遍历数组、类数组对象，字符串、Set、Map 以及 Generator 对象。  
+
+#### 24. ajax、axios、fetch 的区别
+1. AJAX即“AsynchronousJavascriptAndXML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。它是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。  
+这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。其缺点如下：   
+本身是针对 MVC 编程，不符合前端 MVVM 的浪潮    
+基于原生 XHR 开发，XHR 本身的架构不清晰不符合关注分离（Separation of Concerns）的原则   
+配置和调用方式非常混乱，而且基于事件的异步模型不友好。  
+
+2. fetch 号称是 AJAX 的替代品，是在 ES6 出现的，使用了 ES6 中的promise 对象。Fetch 是基于 promise 设计的。Fetch 的代码机构比起 ajax 简单多。fetch 不是 ajax 的进一步封装，而是原生 js，没有使用 XMLHttpRequest 对象。   
+fetch 的优点：  
+语法简洁，更加语义化  
+基于标准 Promise 实现，支持 async/await   
+更加底层，提供的 API 丰富（request, response）   
+脱离了 XHR，是 ES 规范里新的实现方式   
+fetch 的缺点：   
+fetch 只对网络请求报错，对 400，500 都当做成功的请求，服务器返回 400，500 错误码时并不会 reject，只有网络错误这些导致请求不能完成时，fetch 才会被 reject。   
+fetch 默 认 不 会 带 cookie ， 需 要 添 加 配 置 项 ： fetch(url,{credentials: 'include'})    
+fetch 不 支 持 abort ， 不 支 持 超 时 控 制 ， 使 用 setTimeout 及Promise.reject 的实现的超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费    
+fetch 没有办法原生监测请求的进度，而 XHR 可以。
+
+3. Axios 是一种基于 Promise 封装的 HTTP 客户端，其特点如下：   
+浏览器端发起 XMLHttpRequests 请求  
+node 端发起 http 请求  
+支持 Promise API   
+监听请求和返回  
+对请求和返回进行转化  
+取消请求  
+自动转换 json 数据   
+客户端支持抵御 XSRF 攻击   
+
+#### 25. 对原型、原型链的理解
+在 JavaScript 中是使用构造函数来新建一个对象的，每一个构造函数的内部都有一个 prototype 属性，它的属性值是一个对象，这个对象包含了可以由该构造函数的所有实例共享的属性和方法。当使用构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针被称为对象的原型。一般来说不应该能够获取到这个值的，但是现在浏览器中都实现了 __proto__ 属性来访问这个属性，但是最好不要使用这个属性，因为它不是规范中规定的。ES5 中新增了一个Object.getPrototypeOf() 方法，可以通过这个方法来获取对象的原型。   
+当访问一个对象的属性时，如果这个对象内部不存在这个属性，那么它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一般来说都是 Object.prototype 所以这就是新建的对象为什么能够使用 toString() 等方法的原因。  
+特点：JavaScript 对象是通过引用来传递的，创建的每个新对象实体中并没有一份属于自己的原型副本。当修改原型时，与之相关的对象也会继承这一改变。
+ ![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/yxl.png)
+
+ #### 26. 原型链的终点是什么？如何打印出原型链的终点？
+由于 Object 是构造函数，原型链终点 Object.prototype.__proto__，而 Object.prototype.__proto__=== null // true，所以，原型链的终点是 null。原型链上的所有原型都是对象，所有的对象最终都是由 Object 构造的，而 Object.prototype 的下一级是Object.prototype.__proto__。
+
+#### 27. 对作用域、作用域链的理解
