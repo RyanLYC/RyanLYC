@@ -403,3 +403,25 @@ prototype.name = 'Jerry'
   provideState.changeName()
 </script>
 ```
+
+###  vue3.2 => 3.3 
+```ts 
+import type { IPerson, IEvents } from './types'
+
+// interface IPerson {
+  // user:{
+  //   name: string;
+  //   age: number;
+  // }
+  
+// }
+// interface IEvents {
+//   (e: 'change', hidden: boolean): void
+// }
+const props = withDefaults(defineProps<IPerson>(), {
+  user: () => ({ name: 'viking', age: 50 })
+})
+
+const emit = defineEmits<IEvents>()
+
+```
