@@ -15,4 +15,4 @@
 - 🤳 ECMAScript
 - 🐮 NodeJS
 - 👀 [three js](https://github.com/RyanLYC/threejs-cn)
-- 🤳 [前端架构师晋级之路](https://github.com/RyanLYC/fore-end-architect) 
+- 🤳 [前端架构师进阶之路](https://github.com/RyanLYC/fore-end-architect) 
