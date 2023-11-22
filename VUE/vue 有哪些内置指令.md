@@ -1,1 +1,0 @@
-![image](https://github.com/RyanLYC/RyanLYC/raw/main/images/dir.webp)

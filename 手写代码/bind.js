@@ -1,5 +1,5 @@
 /**
- * 原理是接收外部this，然后返回一个新的函数，函数内部返回用接收的this执行call的结果；然后再复制原型
+ * 原理是返回一个新的函数，函数内部返回用call、apply执行的结果；然后新函数要复制调用者的原型
  */
 Function.prototype._bind = function (ctx, ...args) {
   const _self = this;
