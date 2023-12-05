@@ -90,3 +90,19 @@
 - GitFlow自动化代码提交
 - 远程代码自动检查
 - 云端完成构建与发布操作
+
+### 项目  
+痛点 -> 产生需求（PD） -> （PRD文档 包括产品原型图 目标等量化指标）      
+-> 技术方案 （技术选型 技术架构 API定义 技术的调研 评估技术风险） ->  文档（架构师工作）  
+-> 项目立项 （启动 人员分配）   
+-> 项目计划/排期（时间点-WBS文档）   
+-> 上面设计阶段     
+-> 项目实施阶段   ->  交互/视觉设计（设计稿） -> 开发 （前后端开发 联调）  
+-> 测试阶段   
+-> 产品业务 验收微调
+ -> 上线
+ ![项目流程图](./assets/项目开发流程.jpg)
+
+### Git操作规范
+master(代码仓库) | dev -> dev0.0.1 | release -> release0.0.1   
+Git仓库 ->fork -> owner Git仓库 ->clone -> 本地仓库（git checkout -b [new branch]; git add . & git commit; git pull origin master; git push origin [your branch] ） ->push -> owner Git仓库 ->发起pull request ->code review  -> 创建tags&删除开发分支 
