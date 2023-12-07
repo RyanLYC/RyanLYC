@@ -38,7 +38,7 @@ npm init egg --type=ts
 
 ### [Extend](https://www.eggjs.org/zh-CN/basics/extend)
 - Application
-- Contex
+- Context
 - Request
 - Response
 - Helper
