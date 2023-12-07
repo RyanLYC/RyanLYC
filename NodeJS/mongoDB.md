@@ -50,7 +50,7 @@
 
 ### [mongoose](https://mongoosejs.com/)
 - ORM和ODM的概念
-  对象数据模型（Object Data Model，简称 ODM）或对象关系模型（Object Relational Model，简称 ORM）。ODM / ORM 能将网站中的数据表示为 JavaScript 对象，然后将它们映射到底层数据库。一些 ORM 只适用某些特定数据库，还有一些是普遍适用的。Mongoose 是最受欢迎的 ODM。
+  对象数据模型（Object Data Model，简称 ODM）或对象关系模型（Object Relational Model，简称 ORM）。Mongoose 是最受欢迎的 ODM。
 - 链接数据库
   * connect
   * createConnection
@@ -251,7 +251,7 @@ async function run() {
     // const result = await userCollection.insertMany(testArr)
     // const result = await userCollection.find({ name: 'test50000'}).explain()
     // const result = await userCollection.find({ _id: new ObjectId('615c1d058dfd4a491e810d0a')}).explain()
-    // const result = await userCollection.createIndex({ name: 1 })
+    // const result = await userCollection.createIndex({ name: 1 }) // 1 正序 -1 倒序
     //console.log(result)
     const indexResult = await userCollection.listIndexes().toArray()
     console.log(indexResult)
@@ -265,4 +265,85 @@ async function run() {
 }
 
 run()
+```
+
+```js
+import {
+  MongoClient,
+  FindOptions,
+  ObjectId,
+  UpdateFilter,
+  Filter,
+} from "mongodb";
+const url = "mongodb://localhost:27017/";
+const client = new MongoClient(url);
+const records = [
+  {
+    name: "Westbrook",
+    age: 32,
+  },
+  {
+    name: "Howard",
+    age: 35,
+  },
+];
+async function run() {
+  try {
+    await client.connect();
+    const db = client.db("hello");
+    const res = await db.command({ ping: 1 });
+    console.log("connected", res);
+    const teamCollection = db.collection("team");
+    const userCollection = db.collection("user");
+    // const lakerTeam = await teamCollection.findOne({ name: 'Lakers'})
+    // const players = await userCollection.find({ team: lakerTeam._id }).toArray()
+    // console.log(players)
+    // const netTeam = await teamCollection.findOne({ name: 'Nets'})
+    // const netPlayers = await userCollection.find({ _id: { "$in": netTeam.players }}).toArray()
+    // console.log(netPlayers)
+    //
+    // const pipeLine = [
+    //   { $match: { age: { $gt: 30 }}},
+    //   { $group: { _id: "$team", total: { $sum: "$age"}, count: { $sum: 1 }, avg: { $avg: "$age"}}},
+    //   { $sort: { total: 1 }}
+    // ]
+    // const results = await userCollection.aggregate(pipeLine).toArray()
+    // console.log(results)
+    const pipeLine = [
+      { $match: { name: "Nets" } },
+      {
+        $lookup: {
+          from: "user", // 关联查询的数据库
+          localField: "players", // 球队表中 球员的 _id数组
+          foreignField: "_id", // 球员的 _id值存放在 球队的 players中
+          as: "newPlayers", // 新字段名称
+        },
+      },
+    ];
+    const teamWithPlayers = await teamCollection.aggregate(pipeLine).toArray();
+    console.log(teamWithPlayers[0]);
+    const pipeLine2 = [
+      {
+        $match: { team: { $exists: true } },
+      },
+      {
+        $lookup: {
+          from: "team",
+          localField: "team",
+          foreignField: "_id",
+          as: "team",
+        },
+      },
+    ];
+    const playerWithTeam = await userCollection.aggregate(pipeLine2).toArray();
+    console.log(playerWithTeam[0]);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await client.close();
+  }
+}
+
+run();
+
 ```
