@@ -1,7 +1,7 @@
 ## Egg.js
 - [官网](https://www.eggjs.org/zh-CN)
 - Nest.js ts编写的后端框架
-- [Demo]()
+- [Demo](https://github.com/RyanLYC/egg-ts-demo)
 - [项目创建](https://www.eggjs.org/zh-CN/tutorials/typescript) 
 
 ### 创建项目

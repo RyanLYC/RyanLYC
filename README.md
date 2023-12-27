@@ -49,6 +49,11 @@
     * [nginx反向代理](./跨域/nginx反向代理.md)
     * [websocket](./跨域/websocket.md)
     * 多种跨域方式样例代码
+  - [eggJs](./NodeJS/eggjs.md)
+  - [数据库](./NodeJS/数据库.md)
+  - [JWT](./NodeJS/JWT.md)
+  - [mongoDB](./NodeJS/mongoDB.md)
+  - [RBAC(role based access control)根据角色完成权限的控制](./NodeJS/RBAC.md)
 
 
 ## ThreeJS
