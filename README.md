@@ -22,9 +22,14 @@
 - [monorepo](https://github.com/RyanLYC/monorepo)
 - [大文件上传](https://github.com/RyanLYC/file_upload)[后台](https://github.com/RyanLYC/koa-mongodb)
 - [网页置灰方案](https://github.com/RyanLYC/pagegray)
-- [服务器设置以及登录最佳实践](./NodeJS/服务器设置以及登录最佳实践.md)
-- [Docker](./NodeJS/Docker.md)
-- [Docker-redis-mongo配置](./NodeJS/Docker-redis-mongo配置.md)
+- [传统部署模式-pm2-eggJS-cluster](./笔记/传统部署模式.md)
+- 基于 Github Actions & docker compose 的 CI & CD
+
+  1. [服务器设置以及登录最佳实践](./笔记/服务器设置以及登录最佳实践.md)
+  2. [CentOS7 安装 docker&docker-compose](./笔记/安装docker.md)
+  3. [Github Actions](./笔记/GithubActions.md)
+  4. [Docker](./笔记/Docker.md)
+  5. [Docker-redis-mongo 配置](./笔记/Docker-redis-mongo配置.md)
 
 ## Vue
 
@@ -58,7 +63,6 @@
 - [JWT](./NodeJS/JWT.md)
 - [mongoDB](./NodeJS/mongoDB.md)
 - [RBAC(role based access control)根据角色完成权限的控制](./NodeJS/RBAC.md)
-- [传统部署模式-pm2-eggJS-cluster](./NodeJS/传统部署模式.md)
 
 ## ThreeJS
 

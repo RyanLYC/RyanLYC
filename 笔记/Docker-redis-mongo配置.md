@@ -1,3 +1,79 @@
+### Redis
+
+#### 安装
+
+```shell
+docker pull redis:7
+```
+
+#### 启动容器并带密码
+
+```shell
+sudo docker run --name egg-ts-demo-redis -p 6379:6379 -d --restart=always redis:7 redis-server --appendonly yes --requirepass "***"
+
+
+# -p 6379:6379 :将容器内端口映射到宿主机端口(右边映射到左边)
+# redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置
+# requirepass “your passwd” :设置认证密码
+# –restart=always : 随docker启动而启动
+```
+
+#### 命令
+
+```shell
+#查看容器
+docker ps
+
+#查看所有容器
+docker ps -a
+
+#查看进程
+ps -ef | grep redis
+```
+
+#### 设置 docker 启动时 自动启动容器 指令如下
+
+```shell
+docker update 8b8d --restart=always #其中8b8d为容器id  可通过 docker ps 查看
+```
+
+#### 进入容器执行 redis 客户端
+
+```shell
+# redis容器的id是 a126ec987cfe
+docker exec -it a126ec987cfe redis-cli -a 'your passwd'
+
+# 终端
+docker exec -it a126ec987cfe redis-cli -h 127.0.0.1 -p 6379 -a 'your passwd'
+ping
+# PONG
+info
+# Server
+redis_version:4.0.9
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:d3ebfc7feabc1290
+redis_mode:standalone
+os:Linux 3.10.0-693.21.1.el7.x86_64 x86_64
+...
+# 不带密码
+docker exec -it a126ec987cfe redis-cli
+ping
+# (error) NOAUTH Authentication required.
+#127.0.0.1:6379> auth 'your passwd'
+#OK
+#127.0.0.1:6379> ping
+#PONG
+```
+
+### Mongo
+
+#### 安装
+
+```shell
+docker pull mongo
+```
+
 ### Nginx
 
 ​nginx​​​ 一直是 ​​web server​​ 的必备神器，以稳定和高性能著称。
@@ -19,107 +95,6 @@
 - 停止：nginx -s stop
 - 测试配置文件：nginx -t
 - 指定配置文件：nginx -c xxx.conf
-
-### 服务端 CI/CD 测试机(低配 系统 cnetos7.x) Docker Docker-compose github actions
-
-#### Github actions
-
-网上的 CI/CD 有很多，例如 travis ，任选一个即可 Github actions 高效稳定，功能强大
-
-使用 Github actions 做构建和测试
-
-#### 认识 github action
-
-Github 2019 年秋天发布的 CI/CD 工具，功能强大且稳定  
-Github 被微软收购之后，越来越强大了，正在由一个 git 托管服务，变为一个研发项目解决方案
-
-- 介绍 github 项目的 Actions
-- 中文文档 https:/docs.github.com/cn/free-pro-team@latest/actions/learn-github-actions
-
-代码在项目的.github/workflows 目录下，yml 格式文件
-
-##### 应该场景
-
-- master 分支，自动化测试
-- dev 分支，自动部署到测试机
-- v*.*.\* 格式的 tag，自动上线（支持回滚）
-
-##### 使用
-
-1. ​github​​​ 仓库，然后点击 ​​actions​​ 选择 模板，输入 name 就会在项目的 ​​.github/workflows​​​ 目录下，生成 ​​.yml​​ 文件。代码仓库多了一个文件
-2. 本地拉一下代码，可以看到 ​​.yml​​ 文件已经存在了。
-3. 配置文件
-
-```javascript
-# master 分支 自动测试
-
-name: test # 测试名称 语义化即可
-
-on: # 触发条件
-    push: # 在下面的分支进行 push 操作的时候触发
-        branches: # 触发的分支 可以设置多个
-            - main # 分支名称
-        paths: # 以下目录中的文件有改动就触发  可以不写 代表所有文件
-            - '.github/workflows/**'
-            - '__test__/**'
-            - 'src/**'
-
-jobs: # 任务
-    test: # 任务名称 可以自定义 也可以使用第三方
-        runs-on: ubuntu-latest # 指定运行环境 操作系统 没有特殊情况不需要改
-        steps: # 步骤
-            - uses: actions/checkout@v2 # 第一个步骤   第三方的actions   等同于执行了 git pull
-            - name: Use Node.js # 第二个步骤 步骤名称 自定义
-              uses: actions/setup-node@v1 #  第三方的actions   安装 node.js
-              with: # 参数
-                  node-version: 14 # nodejs 的版本
-            - name: lint and test # 第三个步骤 步骤名称 自定义
-              run: | # 自定义执行命令  多行的方式
-                  npm i
-                  npm run lint
-                  npm run test:remote
-    test2: # 任务名称 可以自定义 也可以使用第三方
-        runs-on: ubuntu-latest # 指定运行环境 操作系统 没有特殊情况不需要改
-        steps: # 步骤
-            - run: touch a.txt # 自定义执行命令  单行的方式
-            - run: echo 100 > a.txt # a.text 写入内容
-            - run: cat a.txt # 读取  a.text 内容
-
-```
-
-4. step 的四种方式
-
-```javascript
-# 一 直接使用 uses 第三方
- - uses: actions/checkout@v2
- # 二 使用 name + uses 第三方
- - name: Use Node.js
-   uses: actions/setup-node@v1
- # 三 run  |  多行的方式
- run: |
-      npm i
-      npm run test:remote
- # 四 run 单行的方式
-    - run: touch a.txt
-    - run: echo 100 > a.txt
-    - run: cat a.txt
-```
-
-#### Window 安装 docker
-
-1. 查看是否可以安装 Hyper-V 虚拟机功能  
-   打开命令提示符，输入 ​​systeminfo​​，查看最后四个 Hyper-V 配置是不是全都是 是 。
-2. 安装 Hyper-V
-   将下面的内容复制到记事本当中，并保存为 ​​Hyper-V.cmd​​
-
-```javascript
-pushd "%~dp0"
-dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
-for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
-```
-
-然后右键点击这个文件 以管理员身份运行（A），然后弹出一个验证对话，点击 是，紧接着进行 ​​Windows​​ 命令处理，我们等待处理完成以后，电脑自动重启，进行配置更新  
-3. 启用 Hyper-V ; 控制面板 程序和功能 - 启动或关闭 Window 功能 - 确认 Hyper-V 复选框已经被勾选，并单击确定按钮。 4. 安装 Docker - 官网 -然后等待下载完成，以管理员身份运行（A） 安装包，过程按照引导安装就行，安装完成后，会引导你重启计算机。 5. 出现提升 WSL2 instllation is incomplete 警告 - 点击链接下载安装更新 即可 6. 打开命令行或者 ​​PowerShell​​​ 界面，并执行 ​​docker version​​ 命令，如果出现以下信息说明安装成功。 7. Docker 镜像加速 - "registry-mirrors": ["http://hub-mirror.c.163.com","https://mirror.ccs.tencentyun.com"],
 
 #### 启动一个 Docker 容器 nginx 例子
 
@@ -282,11 +257,3 @@ select "init end...";
 2. 登录测试机，获取最新 ​​main​​ 分支代码
 3. 重新构建镜像，​​docker-compose build editor-server​​
 4. 重启所有容器，​​docker-compose up -d​​
-
-##### 临时设置 ssh key 先要 ssh-copy-id username@remote-server
-
-1. 仓库 - Setting 是 - Secrets - Actions - New repository secret
-2. C:\Users\Ryan\.ssh\id_rsa 把本机的私钥放在代码仓库 ​​setting​​​ 里面的 ​​Secrets​​ 中 RYAN_EDITOR_SERVICE
-3. 获取代码仓库 需要令牌 github 帐号下 Settings - Developer settings ​​ - ​Generate new token​​ - classic - 选择永不过期，把所有的框都勾选上 - 最后点击 ​​Generate token​​ 生成令牌 - 将生成的令牌拷贝下来，保存，下次就看不到了。
-4. sudo git remote add origin https://令牌@github.com/RyanLYC/editor-service.git;
-5. 具体 看 Editor_Service 代码仓库
