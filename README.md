@@ -37,7 +37,7 @@
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
 - [Vue3.2setup 语法糖](./VUE/Vue3.2setup语法糖.md)
 - [vue-router4.0 钩子函数&执行流程](https://github.com/RyanLYC/vue-router4-course)
-- [vue3.3 组件库](https://github.com/RyanLYC/vite-components)[文档地址](https://ryanlyc.github.io/vite-components-last/components/button)
+- [vue3.3 组件库](https://github.com/RyanLYC/vite-components) & [文档地址](https://ryanlyc.github.io/vite-components-last/components/button)
 - [vue3 企业级项目模板搭建](https://github.com/RyanLYC/vue3-template)
 - [vue3 企业后台管理功能模版](https://github.com/RyanLYC/web-vue3-template)
 - [min-vue3](https://github.com/RyanLYC/mini-vue3)
