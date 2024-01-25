@@ -4,6 +4,7 @@
 
 - [npm-yarn-pnpm](./架构/cmd.md)
 - [脚手架](./架构/脚手架.md)
+- [ejs 和 glob 用法](./架构/ejs和glob用法.md)
 
 ## 笔记
 
@@ -41,6 +42,7 @@
 - [vue3 企业后台管理功能模版](https://github.com/RyanLYC/web-vue3-template)
 - [min-vue3](https://github.com/RyanLYC/mini-vue3)
 - [mini-vuex](https://github.com/RyanLYC/mini-vuex)
+- [esbuild 构建 Vue3 组件库](https://github.com/RyanLYC/vue3-component-library-esbuild)
 
 ## React
 
