@@ -22,7 +22,7 @@
 -XX:MaxDirectMemorySize=512m
 如果是 docker 部署，修改配置是没用的，需要设置环境变量
 
-# docker run -d -e "INSTALL4J_ADD_VM_PARAMS=-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m -Djava.util.prefs.userRoot=/nexus-data/javaprefs"  --name nexus3 -p 8081:8081 -v /usr/local/nexus-data:/nexus-data -v /etc/timezone:/etc/timezone:ro sonatype/nexus3
+
 
 ```
 
