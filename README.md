@@ -33,6 +33,8 @@
   4. [Docker](./笔记/Docker.md)
   5. [Docker-redis-mongo 配置](./笔记/Docker-redis-mongo配置.md)
 
+- [基于 nexus3 搭建 npm 私服](./笔记/基于nexus3搭建npm私服.md)
+
 ## Vue
 
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
