@@ -34,6 +34,7 @@
   5. [Docker-redis-mongo 配置](./笔记/Docker-redis-mongo配置.md)
 
 - [基于 nexus3 搭建 npm 私服](./笔记/基于nexus3搭建npm私服.md)
+- [centos7 设置虚拟内存](./笔记/centos7设置虚拟内存.md)
 
 ## Vue
 
