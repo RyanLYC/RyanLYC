@@ -25,14 +25,12 @@
 - [网页置灰方案](https://github.com/RyanLYC/pagegray)
 - [传统部署模式-pm2-eggJS-cluster](./笔记/传统部署模式.md)
 - 基于 Github Actions & docker compose 的 CI & CD
-- [el-table 导出为 Excel](./笔记/XLSX.md)
-
   1. [服务器设置以及登录最佳实践](./笔记/服务器设置以及登录最佳实践.md)
   2. [CentOS7 安装 docker&docker-compose](./笔记/安装docker.md)
   3. [Github Actions](./笔记/GithubActions.md)
   4. [Docker](./笔记/Docker.md)
   5. [Docker-redis-mongo 配置](./笔记/Docker-redis-mongo配置.md)
-
+- [el-table 导出为 Excel](./笔记/XLSX.md)
 - [基于 nexus3 搭建 npm 私服](./笔记/基于nexus3搭建npm私服.md)
 - [centos7 设置虚拟内存](./笔记/centos7设置虚拟内存.md)
 
