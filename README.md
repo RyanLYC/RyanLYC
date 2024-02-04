@@ -68,6 +68,12 @@
 - [mongoDB](./NodeJS/mongoDB.md)
 - [RBAC(role based access control)根据角色完成权限的控制](./NodeJS/RBAC.md)
 
+## 夸端
+
+- [uni-app](https://uniapp.dcloud.net.cn/) 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。
+- [uni-app x](https://doc.dcloud.net.cn/uni-app-x/)是下一代 uni-app，是一个跨平台应用开发引擎。uni-app x 没有使用 js 和 webview，它基于 uts 语言。在 App 端，uts 在 iOS 编译为 swift、在 Android 编译为 kotlin，完全达到了原生应用的功能、性能。
+- [Taro](https://taro-docs.jd.com/docs/version)是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。Taro 3 可以支持转换到 H5、ReactNative 以及任意小程序平台。
+
 ## ThreeJS
 
 - [储能站模型交互](https://github.com/RyanLYC/threejs-cn)
