@@ -94,7 +94,7 @@
 
 ## CLI
 
-- [move-folder-cli](https://www.npmjs.com/package/move-folder-cli) Copy or Move a folder on the command-line
+- [move-folder-cli](https://www.npmjs.com/package/move-folder-cli) 在命令行上复制或移动文件夹
 - [create-vite](https://github.com/RyanLYC/zg-create-app)
 
 ## 手写代码
