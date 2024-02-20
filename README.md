@@ -172,7 +172,7 @@
   - [EventLoop](./面试题/JavaScript/EventLoop.md)
   - [Set-Map-WeakSet-WeakMap 的区别](./面试题/JavaScript/Set-Map-WeakSet-WeakMap的区别.md)
 - VUE
-  - [vue 组件间传值方式](./VUE/vue组件间传值方式.md)
+  - [vue 组件间通信方式](./VUE/vue组件间传值方式.md)
   - [vue3 内置指令](https://cn.vuejs.org/api/built-in-directives.html#v-text)
   - [vue-router 有几种模式](./VUE/vue-router有几种模式.md)
   - vue 首屏渲染优化有哪些? `图片压缩/懒加载 - 禁止生成 .map 文件 - 路由懒加载 - cdn 引入公共库 - 开启 GZIP 压缩`
@@ -181,3 +181,58 @@
   - [vue 生命周期函数](./VUE/vue生命周期函数.md)
   - [v-show 和 v-if 有什么区别](./VUE/v-show和v-if有什么区别.md)
   - [什么是 SPA-有什么优点和缺点](./VUE/什么是SPA-有什么优点和缺点.md)
+  - [v-if 与 v-for 那个优先级更高？怎么优化？]
+    - v-for 优先级更高，因为源码中优先判断 el.for 再到 el.if
+    - 同一个标签中的时候，每次渲染都会先执行循环再判断条件，浪费性能
+    - 优化方式一是外层增加一个 template 标签做 v-if 判断，内部 v-for 循环
+    - 优化方式二 使用 computed 得到最终结果渲染
+  - Vue 组件 data 为何必须是个函数？Vue 的根实例则没有此限制？
+    - data 必须为函数是为了同个组件多个实例的时候，使用不同的 data（源码中，初始化 data 的时候会检测是否是个 function，是则执行然后赋值给 data，否则使用传入的 data。实际是运行不了，vue 报错提示 data 必须是个函数）
+    - 根实例没有限制是因为每次创建是使用 new Vue() 创建不同实例
+  - key 的作用&工作原理？
+    - key 的作用是高效地更新虚拟 Dom
+    - 原理是 Vue 在 patch 过程中通过 key 可以精准判断两个节点是否是同一个，从而避免频繁更新不同元素，使 patch 过程更加高效，减少 dom 操作，提高性能。
+    - 如果不设置 key，key 就会=undefined，每个元素的 key 都是相等的，可能会引发 bug
+  - vue 的 diff 算法？
+    - diff 是新旧虚拟 Dom 的对比，将变化的的 Dom 更新到真实的 Dom 上。高效的 diff 算法降低对比的时间复杂度
+    - vue 中每个组件都会有一个 watch，组件改变的时候触发更新函数，此时会执行 diff，他会比对上一次渲染结果 oldVnode 和新的渲染结果 newVnode，此过程是 patch-打补丁
+    - vue 的 diff 算法遵循深度优先、同层比较的策略；两个节点之间比较会根据他们是否拥有子节点或者文本节点做不同的操作；比较两组子节点的时候，是假设头尾节点可能相同做 4 次对比尝试，如果没有找到相同的节点才按照通用方式遍历查找，查找结束批量删除或者新增处理剩余的节点；借助 key 通常可以非常精确找到相同节点，因此整个 patch 过程非常高效。
+  - vue 组件化的理解？
+    - 组件系统是 Vue 的核心特效，频繁更新的数据显示定义为组件可以优化性能，因为每个组件有一个 watch，改变后更新组件
+    - 组件化可以提供开发效率、复用性等
+    - 组件一般分为页面组件、业务组件、通用组件
+    - vue 的组件是基于配置的，我们编写的 template 组件的 vue 文件是组件配置，框架会生成其构造函数，它们基于 VueComponent，扩展与 Vue
+    - vue 的组件化技术：属性 props、自定义事件、插槽，自定义指令等，用于组件的通信和扩展
+    - 组件要遵循单向数据流
+    - 组件要高内聚、低耦合
+  - MVC、MVP、MVVM 的理解？
+    - MVC - user -> C -> M -> V 、 M -> V 、 C -> V ； C 可以操作 V，M 也可以操作 V，user 通过 V 调用 C
+    - MVP - M -> <- P -> <- V ; P 负责管理一切操作
+    - MVVM - VM 是 ViewModel 类似 P，
+    - 三个都是框架模式，主要是为了解决 Model 和 View 的耦合问题
+    - MVC 很早期，前端还是模版时期
+    - MVP 是 MVC 的进化，P 层处理 MV 之间的通信
+    - MVVM 主要是前端中使用，类似于 MVP，VM 解决两者的映射关系
+  - [Vue 性能优化方法有哪些？](./VUE/Vue性能优化.md)
+  - [Vue3.0 新特性](./VUE/Vue3.0新特性.md)
+  - VueX 的使用以及理解
+    - vue component ->dispatch -> Action(后端 API 获取数据) ->commit -> Mutations(Devtools) ->Mutate -> State ->Render -> vue component
+    - vuex 是 vue 的专用状态管理库，以全局方式管理应用的状态
+    - vuex 解决多个组件之间的状态共享问题
+    - vuex 并非必须使用
+    - vuex 实现单向数据流醉倒数据的响应式
+  - vue 的 nextTick，是什么？干什么？实现原理？
+    - 在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，可以获取到更新后的 Dom
+    - Vue 在更新 DOM 的时候是异步的。只要侦听到数据变化，Vue 将开启一个队列，并缓存在同一个事件循环中发生的所有数据变更。如果同一个 watcher 被多次出发，只会被推入到队列中一次，避免不必要的 DOM 计算。nextTick 方法会在队列中加入一个回调函数，确保该函数前面的 DOM 操作全部完成后才调用
+  - Vue 响应式的理解？
+    - 响应式：就是能够使数据变化可以被检测到并对这种变化做出响应的机制
+    - MVVM 框架中要解决的一个核心问题就是连接数据层和视图层，通过数据驱动视图更新
+    - vue 的数据响应式结合虚拟 DOM 和 patch 算法，让我们只需要操作数据，不用繁琐的操作 DOM
+    - Vue2 中数据响应式会根据不同的数据类型进行处理，如果是对象会采用 Object.defineProperty()的方式定义数据的拦截，当数据被访问或者发生变化时，做出响应。对象初始化后在追加属性是不会有响应式的，需要使用 Vue.set/delete 才能生效。如果是数组则通过覆盖数组原型的方法，扩展它的 7 个变更方法，使这些方法可以做出响应。对于 es6 的 Map、Set 这些数据结构不支持等问题
+    - Vue3 重写了这部分，使用了 es6 的 proxy 机制代理要这些需要响应式的数据。
+  - [如何扩展某个 Vue 组件？](https://cn.vuejs.org/api/options-composition.html#provide)
+    - 扩展的方式 mixins（vue3 推荐使用 composition api）、slots、extends
+    - mixins:一个包含组件选项对象的数组，这些选项都将被混入到当前组件的实例中。
+    - extends:使一个组件可以继承另一个组件的组件选项。
+    - slots
+    - composition api 逻辑复用
