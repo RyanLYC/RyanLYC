@@ -32,7 +32,7 @@
   4. [Docker](./笔记/Docker.md)
   5. [Docker-redis-mongo 配置](./笔记/Docker-redis-mongo配置.md)
 - [el-table 导出为 Excel](./笔记/XLSX.md)
-- [基于 nexus3 搭建 npm 私服](./笔记/基于nexus3搭建npm私服.md)
+- [基于 nexus3 搭建 npm 私库](./笔记/基于nexus3搭建npm私库.md)
 - [centos7 设置虚拟内存](./笔记/centos7设置虚拟内存.md)
 
 ## Vue

@@ -67,3 +67,12 @@ npm init -y # 创建一个新目录并进行初始化
 npm install move-folder-cli # 验证是否能从仓库中获取包
 
 ```
+
+### 踩坑记录
+
+1. 运行 npm 任何命令都是报错 401 unauthorized,无论用管理员还是超级用户
+   解决：将包发布到 nexus npm 仓库需要设置一下 Nexus Repository Manager 的权限。否则无法登陆到我们的私服。在 Security->Realms 栏目里，将 npm Bearer Token Realm 选入 Active。
+
+2. 报错： npm install 可以成功，但是 yarn add 一直失败
+   解决：.npmrc 头部加上 always-auth=true
+   参考：https://github.com/yarnpkg/yarn/issues/3093
