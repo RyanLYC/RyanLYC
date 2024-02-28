@@ -1,6 +1,12 @@
+### ssh
+
+- ssh -T -v git@github.com 验证 github ssh 连接
+- ssh -T -v git@gitee.com 验证 gitee ssh 连接
 
 ### npm
-#### 1、设置npm路径
+
+#### 1、设置 npm 路径
+
 ```shell
 #全局安装路径
 npm config set prefix "D:\Program Files\nodejs\node_global"
@@ -8,7 +14,9 @@ npm config set prefix "D:\Program Files\nodejs\node_global"
 npm config set cache "D:\Program Files\nodejs\node_cache"
 
 ```
+
 #### 2、设置镜像
+
 ```shell
 #1,淘宝镜像源
 npm config set registry https://registry.npmmirror.com
@@ -27,7 +35,9 @@ npm config set registry https://registry.npmjs.org
 npm config get registry
 
 ```
+
 #### 3.常用命令简写说明
+
 ```shell
 -g： #--global 的缩写，表示安装到全局目录里
 -S： #--save 的缩写，表示安装的包将写入package.json里面的dependencies
@@ -35,7 +45,9 @@ npm config get registry
  i： #install的缩写，表示安装
 
 ```
+
 #### 4、安装模块
+
 ```shell
 npm init  # npm 初始化当前目录
 npm i   # 安装所有依赖
@@ -49,7 +61,9 @@ npm i express -S  # 安装包信息将加入到dependencies生产依赖
 npm i express -D  # 安装包信息将加入到devDependencies开发依赖
 
 ```
+
 #### 5、卸载模块
+
 ```shell
 npm uninstall express  # 卸载模块，但不卸载模块留在package.json中的对应信息
 npm uninstall express -g  # 卸载全局模块
@@ -57,7 +71,9 @@ npm uninstall express --save  # 卸载模块，同时卸载留在package.json中
 npm uninstall express --save-dev  # 卸载模块，同时卸载留在package.json中devDependencies下的信息
 
 ```
+
 #### 6、更新模块
+
 ```shell
 npm update express  # 更新最新版本的express
 npm update express@2.1.0  # 更新到指定版本号的express
@@ -66,6 +82,7 @@ npm update express@latest  # 更新到最后的新版本
 ```
 
 #### 7、查看命令
+
 ```shell
 npm -v   #查看版本号
 npm root  # 查看项目中模块所在的目录
@@ -80,7 +97,9 @@ npm list express 或 npm ls express  # 查看本地已安装的express的详细�
 npm view express repository.url  # 查看express包的来源地址
 
 ```
+
 #### 8、其他命令
+
 ```shell
 npm cache clean  # 清除npm的缓存
 npm prune  # 清除项目中没有被使用的包
@@ -91,7 +110,9 @@ npm home express  # 会打开默认浏览器跳转到github中express的主页
 npm install -g npm@9.8.1 # 升级npm
 
 ```
-#### 9、通过使用淘宝定制的cnpm安装
+
+#### 9、通过使用淘宝定制的 cnpm 安装
+
 ```shell
 npm install -g cnpm --registry=https://registry.npmmirror.com
 npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -102,22 +123,28 @@ cnpm -v
 ```
 
 ### yarn
-#### 1、安装yarn 
+
+#### 1、安装 yarn
+
 ```shell
 npm install -g yarn
 yarn --version
 ```
-#### 2、初始化项目 
+
+#### 2、初始化项目
+
 ```shell
 yarn init # 同npm init，执行输入信息后，会生成package.json文件
-yarn的配置项： 
+yarn的配置项：
 yarn config list # 显示所有配置项
 yarn config get <key> # 显示某配置项
 yarn config delete <key> # 删除某配置项
 yarn config set <key> <value> [-g|--global] #设置配置项
 yarn config set registry https://registry.npmmirror.com # 添加淘宝源
 ```
-#### 3、安装包： 
+
+#### 3、安装包：
+
 ```shell
 yarn install # 安装package.json里所有包，并将包及它的所有依赖项保存进yarn.lock
 yarn install --flat # 安装一个包的单一版本
@@ -126,7 +153,9 @@ yarn install --production # 只安装dependencies里的包
 yarn install --no-lockfile # 不读取或生成yarn.lock
 yarn install --pure-lockfile # 不生成yarn.lock
 ```
-#### 4、添加包（会更新package.json和yarn.lock）
+
+#### 4、添加包（会更新 package.json 和 yarn.lock）
+
 ```shell
 yarn add [package] #  在当前的项目中添加一个依赖包，会自动更新到package.json和yarn.lock文件中
 yarn add [package]@[version] #  安装指定版本，这里指的是主要版本，如果需要精确到小版本，使用-E参数
@@ -139,41 +168,52 @@ yarn add --optional/-O #  加到 optionalDependencies
 
 # 默认安装包的主要版本里的最新版本，下面两个命令可以指定版本：
 # 安装包的精确版本。例如yarn add test@1.2.3会接受1.9.1版，但是yarn add test@1.2.3 --exact只会接受1.2.3版
-yarn add --exact/-E 
+yarn add --exact/-E
 #  安装包的次要版本里的最新版。例如yarn add foo@1.2.3 --tilde会接受1.2.9，但不接受1.3.0
-yarn add --tilde/-T 
+yarn add --tilde/-T
 ```
+
 #### 5、发布包
+
 ```shell
 yarn publish
 ```
-#### 6、移除一个包 
+
+#### 6、移除一个包
+
 ```shell
 yarn remove <packageName>：移除一个包，会自动更新package.json和yarn.lock
 ```
-#### 7、更新一个依赖 
+
+#### 7、更新一个依赖
+
 ```shell
 yarn upgrade 用于更新包到基于规范范围的最新版本
 ```
 
-#### 8、运行脚本 
+#### 8、运行脚本
+
 ```shell
 yarn run 用来执行在 package.json 中 scripts 属性下定义的脚本
 ```
 
-#### 9、显示某个包的信息 
+#### 9、显示某个包的信息
+
 ```shell
 yarn info <packageName> 可以用来查看某个模块的最新版本信息
 ```
-#### 10、缓存 
+
+#### 10、缓存
+
 ```shell
-yarn cache 
-yarn cache list # 列出已缓存的每个包 
-yarn cache dir # 返回 全局缓存位置 
+yarn cache
+yarn cache list # 列出已缓存的每个包
+yarn cache dir # 返回 全局缓存位置
 yarn cache clean # 清除缓存
 ```
 
 ### pnpm
+
 ```shell
 # 安装指定版本pnpm
 npm install -g pnpm
@@ -186,7 +226,7 @@ pnpm config get registry
 #切换源：
 pnpm config set registry <淘宝源或其他源地址>
 
-#配置全局安装路径： 
+#配置全局安装路径：
 pnpm config set store-dir “全局地址”
 例：pnpm config set store-dir D:\node\pnpm\global
 
