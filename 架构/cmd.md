@@ -2,6 +2,9 @@
 
 - ssh -T -v git@github.com 验证 github ssh 连接
 - ssh -T -v git@gitee.com 验证 gitee ssh 连接
+  `-v 打印debug信息`
+  `如果ssh之后依然提示需要输入密码：只要.ssh文件夹的config增加一行：PubkeyAcceptedKeyTypes=+ssh-rsa`
+  `https://juejin.cn/post/7140242030076100645`
 
 ### npm
 
