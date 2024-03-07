@@ -7,6 +7,7 @@
 - [ejs 和 glob 用法](./架构/ejs和glob用法.md)
 - [前端监控](./架构/前端监控.md)
 - [微前端-micro-app](./微前端/micro-app.md)
+- [Linux 基础知识](./架构/Linux.md)
 
 ## 笔记
 
