@@ -2,12 +2,12 @@
 
 ## [架构](./架构/README.md)
 
+- [Linux 基础知识](./架构/Linux.md)
 - [npm-yarn-pnpm](./架构/cmd.md)
+- [帮助文档](./架构/在线帮助文档.md) - to do
 - [脚手架](./架构/脚手架.md)
-- [ejs 和 glob 用法](./架构/ejs和glob用法.md)
 - [前端监控](./架构/前端监控.md) & [前端监控平台源码](https://github.com/RyanLYC/front-end-monitor)
 - [微前端-micro-app](./微前端/micro-app.md) & [项目源码](https://github.com/RyanLYC/micro-app)
-- [Linux 基础知识](./架构/Linux.md)
 - [前端性能优化](./架构/前端性能优化.md)
 
 ## 笔记
@@ -40,6 +40,7 @@
 
 ## Vue
 
+- [vue 3.4 版本](https://blog.vuejs.org/posts/vue-3-4) - [掘金中文](https://juejin.cn/post/7329280514627256361)
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
 - [Vue3.2setup 语法糖](./VUE/Vue3.2setup语法糖.md)
 - [vue-router4.0 钩子函数&执行流程](https://github.com/RyanLYC/vue-router4-course)
@@ -52,12 +53,13 @@
 
 ## React
 
-- [自己实现 React18 - to do]()
+- [实现自己的 React18 - to do]()
 
 ## NodeJS
 
 - [Express 与 Koa2 之间的区别](./NodeJS/Express与Koa2.md)
 - [koa2-mongodb5](https://github.com/RyanLYC/koa-mongodb)
+- [ejs 和 glob 用法](./NodeJS/ejs和glob用法.md)
 - [数据库](./NodeJS/数据库.md)
 - [cookie 与 Session](./NodeJS/cookie与Session.md)
 - [跨域](./NodeJS/跨域.md)
