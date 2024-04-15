@@ -1,15 +1,5 @@
 # 前端架构师进阶之路
 
-## CDN 网站
-
-- 国内
-  - [BootCdn 网站](https://www.bootcdn.cn/)
-  - [七牛云](http://staticfile.org/)
-- 国外
-  - [unpkg 网站](https://unpkg.com)
-  - [cdnjs 网站](https://cdnjs.com/)
-  - [jsdelivr 网站](https://www.jsdelivr.com/)
-
 ## [架构](./架构/README.md)
 
 - [Linux 基础知识](./架构/Linux.md)
@@ -130,6 +120,16 @@
 
 - [Git 命令速查表](https://shfshanyue.github.io/cheat-sheets/git)
 
+## CDN 网站
+
+- 国内
+  - [BootCdn 网站](https://www.bootcdn.cn/)
+  - [七牛云](http://staticfile.org/)
+- 国外
+  - [unpkg 网站](https://unpkg.com)
+  - [cdnjs 网站](https://cdnjs.com/)
+  - [jsdelivr 网站](https://www.jsdelivr.com/)
+
 ## 八股文
 
 - [计算机网络部分](./八股文/计算机网络部分.md)
@@ -157,6 +157,24 @@
 ## 视频库
 
 - [flv.js mpegts.js](./视频库/flvjs.md)
+
+## 各种解决方案总结
+
+- 编程规范解决方案
+  - [项目搭建](https://github.com/RyanLYC/vue3-template)
+  - [进阶模版](https://github.com/RyanLYC/web-vue3-template)
+- 换肤解决方案
+  - [前端主题切换方案详解](./前端进阶/前端主题切换方案详解.md)
+  - [本地 + ElementPlus 共同换肤解决方案](https://github.com/RyanLYC/vue3-template-2024)
+- 多端响应式适配解决方案
+  - 媒体查询
+  - rem
+  - viewport - vw、wh - [异形移动机器处理](./前端进阶/异形移动机器处理.html)
+  - tailwindcss
+- 性能优化解决方案
+  - [前端性能优化](./架构/前端性能优化.md)
+  - [Vue 性能优化方法有哪些？](./VUE/Vue性能优化.md)
+  - to do
 
 ## 面试
 

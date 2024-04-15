@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .safe-area-bottom {
+        position: fixed;
+        bottom: constant(safe-area-inset-bottom);
+        bottom: env(safe-area-inset-bottom);
+        width: 100%;
+        height: 46px;
+        line-height: 46px;
+        text-align: center;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+         viewport-fit IOS 11 新增特性；
+            contain 可视窗口完全保护网页内容
+            cover 网页内容完全覆盖可视窗口
+            auto 默认值
+        
+        四个距离变量
+            safe-area-inset-left 安全区域左边距
+            safe-area-inset-right 安全区域左边距
+            safe-area-inset-top 安全区域左边距
+            safe-area-inset-bottom 安全区域左边距
+
+        css 函数
+            bottom: constant(safe-area-inset-bottom); ios < 11.2
+            bottom: env(safe-area-inset-bottom); ios >= 11.2
+    
+    -->
+    <div class="safe-area-bottom">下一步</div>
+  </body>
+</html>
