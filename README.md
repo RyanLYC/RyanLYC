@@ -78,7 +78,7 @@
 
 ## 夸端
 
-- [uni-app](https://uniapp.dcloud.net.cn/) 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。
+- [uni-app](https://uniapp.dcloud.net.cn/) 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 iOS、Android、Web(响应式)、以及各种小程序(微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝)、快应用等多个平台。
 - [uni-app x](https://doc.dcloud.net.cn/uni-app-x/)是下一代 uni-app，是一个跨平台应用开发引擎。uni-app x 没有使用 js 和 webview，它基于 uts 语言。在 App 端，uts 在 iOS 编译为 swift、在 Android 编译为 kotlin，完全达到了原生应用的功能、性能。
 - [Taro](https://taro-docs.jd.com/docs/version)是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。Taro 3 可以支持转换到 H5、ReactNative 以及任意小程序平台。
 
@@ -174,7 +174,11 @@
 - 性能优化解决方案
   - [前端性能优化](./架构/前端性能优化.md)
   - [Vue 性能优化方法有哪些？](./VUE/Vue性能优化.md)
-  - to do
+  - 网站性能查看-chrome network 、 Performance 、Lighthouse 扩展程序
+  - 数据懒加载 (IntersectionObserver) vueuse 中的 useIntersectionObserver
+  - 图片懒加载 (img src 占位图，构建 vue 自定义指令 mounted 生命周期 + IntersectionObserver 更换路径)
+  - 打包体积过大 与 CDN 优化
+  - gzip、http 缓存、service worker
 
 ## 面试
 
@@ -222,7 +226,7 @@
     - 优化方式一是外层增加一个 template 标签做 v-if 判断，内部 v-for 循环
     - 优化方式二 使用 computed 得到最终结果渲染
   - Vue 组件 data 为何必须是个函数？Vue 的根实例则没有此限制？
-    - data 必须为函数是为了同个组件多个实例的时候，使用不同的 data（源码中，初始化 data 的时候会检测是否是个 function，是则执行然后赋值给 data，否则使用传入的 data。实际是运行不了，vue 报错提示 data 必须是个函数）
+    - data 必须为函数是为了同个组件多个实例的时候，使用不同的 data(源码中，初始化 data 的时候会检测是否是个 function，是则执行然后赋值给 data，否则使用传入的 data。实际是运行不了，vue 报错提示 data 必须是个函数)
     - 根实例没有限制是因为每次创建是使用 new Vue() 创建不同实例
   - key 的作用&工作原理？
     - key 的作用是高效地更新虚拟 Dom
@@ -266,7 +270,7 @@
     - Vue2 中数据响应式会根据不同的数据类型进行处理，如果是对象会采用 Object.defineProperty()的方式定义数据的拦截，当数据被访问或者发生变化时，做出响应。对象初始化后在追加属性是不会有响应式的，需要使用 Vue.set/delete 才能生效。如果是数组则通过覆盖数组原型的方法，扩展它的 7 个变更方法，使这些方法可以做出响应。对于 es6 的 Map、Set 这些数据结构不支持等问题
     - Vue3 重写了这部分，使用了 es6 的 proxy 机制代理要这些需要响应式的数据。
   - [如何扩展某个 Vue 组件？](https://cn.vuejs.org/api/options-composition.html#provide)
-    - 扩展的方式 mixins（vue3 推荐使用 composition api）、slots、extends
+    - 扩展的方式 mixins(vue3 推荐使用 composition api)、slots、extends
     - mixins:一个包含组件选项对象的数组，这些选项都将被混入到当前组件的实例中。
     - extends:使一个组件可以继承另一个组件的组件选项。
     - slots
