@@ -179,6 +179,12 @@
   - 图片懒加载 (img src 占位图，构建 vue 自定义指令 mounted 生命周期 + IntersectionObserver 更换路径)
   - 打包体积过大 与 CDN 优化
   - gzip、http 缓存、service worker
+- 图表解决方案
+  - [ECharts](https://echarts.apache.org/zh/index.html)
+  - [ECharts Demo 库](https://www.isqqw.com/)
+  - [ECharts 封装库 DataV](<[DataV](http://datav.jiaminghi.com/)>)
+  - [AntV](https://antv.antgroup.com/zh)
+  - [D3](https://d3js.org/)
 
 ## 面试
 
