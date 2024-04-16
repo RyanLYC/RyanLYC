@@ -130,34 +130,6 @@
   - [cdnjs 网站](https://cdnjs.com/)
   - [jsdelivr 网站](https://www.jsdelivr.com/)
 
-## 八股文
-
-- [计算机网络部分](./八股文/计算机网络部分.md)
-- [浏览器部分](./八股文/浏览器部分.md)
-- [前端工程化部分](./八股文/前端工程化部分.md)
-- [性能优化部分](./八股文/性能优化部分.md)
-- [HTML 部分](./八股文/HTML部分.md)
-- [CSS 部分](./八股文/CSS部分.md)
-- [JavaScript 部分](./八股文/JavaScript部分.md)
-- [React 部分](./八股文/React部分.md)
-- [VUE 部分](./八股文/VUE部分.md)
-
-## ECMAScript
-
-- [ECMAScript](./ECMAScript/index.md)
-- [ES6 新特性-2015](./ECMAScript/ES6新特性-2015.md)
-- [ES7 新特性-2016](./ECMAScript/ES7新特性-2016.md)
-- [ES8 新特性-2017](./ECMAScript/ES8新特性-2017.md)
-- [ES9 新特性-2018](./ECMAScript/ES9新特性-2018.md)
-- [ES10 新特性-2019](./ECMAScript/ES10新特性-2019.md)
-- [ES11 新特性-2020](./ECMAScript/ES11新特性-2020.md)
-- [ES12 新特性-2021](./ECMAScript/ES12新特性-2021.md)
-- [ES13 新特性-2022](./ECMAScript/ES13新特性-2022.md)
-
-## 视频库
-
-- [flv.js mpegts.js](./视频库/flvjs.md)
-
 ## 各种解决方案总结
 
 - 编程规范解决方案
@@ -185,6 +157,34 @@
   - [ECharts 封装库 DataV](<[DataV](http://datav.jiaminghi.com/)>)
   - [AntV](https://antv.antgroup.com/zh)
   - [D3](https://d3js.org/)
+
+## 八股文
+
+- [计算机网络部分](./八股文/计算机网络部分.md)
+- [浏览器部分](./八股文/浏览器部分.md)
+- [前端工程化部分](./八股文/前端工程化部分.md)
+- [性能优化部分](./八股文/性能优化部分.md)
+- [HTML 部分](./八股文/HTML部分.md)
+- [CSS 部分](./八股文/CSS部分.md)
+- [JavaScript 部分](./八股文/JavaScript部分.md)
+- [React 部分](./八股文/React部分.md)
+- [VUE 部分](./八股文/VUE部分.md)
+
+## ECMAScript
+
+- [ECMAScript](./ECMAScript/index.md)
+- [ES6 新特性-2015](./ECMAScript/ES6新特性-2015.md)
+- [ES7 新特性-2016](./ECMAScript/ES7新特性-2016.md)
+- [ES8 新特性-2017](./ECMAScript/ES8新特性-2017.md)
+- [ES9 新特性-2018](./ECMAScript/ES9新特性-2018.md)
+- [ES10 新特性-2019](./ECMAScript/ES10新特性-2019.md)
+- [ES11 新特性-2020](./ECMAScript/ES11新特性-2020.md)
+- [ES12 新特性-2021](./ECMAScript/ES12新特性-2021.md)
+- [ES13 新特性-2022](./ECMAScript/ES13新特性-2022.md)
+
+## 视频库
+
+- [flv.js mpegts.js](./视频库/flvjs.md)
 
 ## 面试
 
