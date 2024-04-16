@@ -154,7 +154,7 @@
 - 图表解决方案
   - [ECharts](https://echarts.apache.org/zh/index.html)
   - [ECharts Demo 库](https://www.isqqw.com/)
-  - [ECharts 封装库 DataV](<[DataV](http://datav.jiaminghi.com/)>)
+  - [ECharts 封装库 DataV](http://datav.jiaminghi.com/)
   - [AntV](https://antv.antgroup.com/zh)
   - [D3](https://d3js.org/)
 
