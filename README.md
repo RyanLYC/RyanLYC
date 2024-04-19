@@ -158,6 +158,10 @@
   - [ECharts 封装库 DataV](http://datav.jiaminghi.com/)
   - [AntV](https://antv.antgroup.com/zh)
   - [D3](https://d3js.org/)
+- SVG & Canvas
+  - svg
+    - svg 的 xml 中 svg 标签需要增加 id 属性，<svg><use xlink:href="./image/svg.svg#idName" style="fill:red"/></svg>
+    - path 的 fill 属性需要删除 才可以变色
 
 ## 八股文
 
