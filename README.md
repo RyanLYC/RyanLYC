@@ -160,8 +160,77 @@
   - [D3](https://d3js.org/)
 - SVG & Canvas
   - svg
-    - svg 的 xml 中 svg 标签需要增加 id 属性，<svg><use xlink:href="./image/svg.svg#idName" style="fill:red"/></svg>
+    - svg 的 xml 中 svg 标签需要增加 id 属性，`<svg><use xlink:href="./image/svg.svg#idName" style="fill:red"/></svg>`
     - path 的 fill 属性需要删除 才可以变色
+- 路由&应用渲染解决方案
+  - hash 模式是一个前端路由的实现方式，主要特点是在 URL 中使用#符号来标记路由。在 hash 模式下，当前用户访问不同的路由时，实际上只是在 URL 中修改了#后面的部分，获取对应的 js 文件，而不会向传统的 URL 一样向服务器发出新的`页面`请求。优点：前端路由变得简单，不需要后端服务的支持。缺点：对于搜索隐藏来说，页面中的所有路由都指向同一个 URL，这对于 SEO 的优化有一定的影响，其次不好看。
+  - history 模式是指使用 HTML5 History API 来实现前端路由的一种方式，在 history 模式下，路由的改变不会改变 URL 中的 hash 值，而是通过修改 URK 的 pathname 和 search 部分来实现。因此使用 history 模式时，URL 看起来更加清晰，没有#。history 模式可以使用真实 URL 地址来访问页面，比较好看，同时有助于 SEO 优化，因为搜索引擎更喜欢真实的 URL 地址。但是前端路由改变不会触发页面刷新(SPA 单页面模式下)，所以在用户收到刷新页面或者直接访问某个路由时，需要在后端服务中设置对应的路由响应处理，防止出现 404 错误页面。(比如没找到页面的时候依然返回 index.html 页面文件)
+  - CSR 客户端渲染是指前端框架(vue、react 等)，在浏览器中执行 JavaScript，根据接口返回的数据进行动态生成 HTML、CSS、和 JavaScript，渲染页面的流程。 浏览器白屏 -> 服务器 -> HTML 页面 -> 渲染页面 -> 想服务器请求 css、js 文件 -> api 接口数据 -> 渲染页面
+  - SSR 服务端渲染原理：浏览器 -> 服务器 -> API -> 获取数据 -> 模版+数据 -> HTML 页面 -> 浏览器渲染
+  - Prerender 预渲染针对非动态项目的解决方案。Prerender 预渲染是一种在服务器上预先渲染页面内容，并将其缓存到静态 HTML 文件中，当用户访问该页面时，将直接提供缓存的 HTML 文件，而不必生成页面内容，从而提高页面的渲染速度和性能。
+  - 同构渲染：首页通过服务端渲染，其他内容通过客户端渲染的一种方式；会使得应用复杂且难以维护。
+- 前端安全解决方案
+  - XSS 跨站脚本攻击：攻击者将恶意的脚本注入到合法网站的页面中，使得用户在访问页面时，执行这些脚本，从而达到攻击者的目的。典型案例，v-html 显示评论内容--恶意脚本。
+    - 阻止注入：判断评论内容是否合规
+    - 阻止执行：DOMPurify 库
+  - CSRF 跨站请求伪造：利用用户已经登录了的目标网站的身份，在用户不知情的情况下完成非法操作。
+    - 攻击
+      - 构造一个假的网页，用户打开，输入信息，
+      - 用户登录过的其他网站，伪装请求进行恶意操作
+    - 防止
+      - token 令牌因为 token 存放于 header 中，只有自己知道。
+  - 点击劫持(Clickjacking)： 用户点击操作，网站拦截了点击操作去执行其他事情
+    - 需要一个恶意网站，用户访问，利用一个透明可以点击的控件放于想要点击的按钮上面，用户点击进行攻击，例如下载恶意程序
+  - 其他安全防护
+    - 内容安全策略(CSP):在 meta 中的 content 增加代码，会限制本地访问和指定域名访问，这样图片 CDN 会被拦截了，导致应用问题
+    - 严格传输安全(HSTS):在服务端配置响应头用来通知浏览器应该只通过 HTTPS 访问该站点，并以后使用 HTTP 访问该站点的所有尝试都应该自动重定向到 HTTPS
+- WebGL 和 3D 渲染解决方案
+  - Canvas：2D 渲染环境
+  - OpenGL：跨平台图像编程接口规范
+  - WebGL：使用 OpenGL 绘制 3D 图形渲染(canvas 上使用 OpenGL)
+    - 框架
+      - Three.js 国内使用最多
+      - Babylon.js
+      - A-Frame 基于 Three.js 的 webVR 框架
+      - PlayCanvas 面向游戏开发的 WebGL 引擎
+- 模块化与打包工具解决方案
+  - 模块化处理规范 CMD、AMD 和 UMD(兼容 AMC 和 CMD) 基本上不使用了太老了
+    - CommonJS(CJS) 基于 Node
+    - ES6 Modules(ESM) 基于浏览器
+  - 打包模块化构建工具
+    - vite
+      - devServer 开发服务器，基于原生 ES(ES6 Modules)模块进行实现
+      - 打包，使用 Rollup 进行打包
+    - webpack 构建整个应用
+    - rollup
+- 第三方工具解决方案
+  - 统计类工具
+    - 友盟统计分析 收费
+    - 百度统计
+  - 云服务平台
+    - 阿里云 使用率最广
+    - 腾讯云
+    - 七牛云
+  - UI 组件库
+    - Ant Design 阿里
+    - element ui vue 社区维护
+    - arco design 字节
+    - vant vue 有赞
+    - vuetify vue 社区维护
+    - material-ui react 社区维护
+  - Mock 数据平台
+    - YApi
+    - APIFox
+    - swagger
+    - Mock.js 需要代码实现
+  - 验证服务工具(行为验证、身份验证(app 本机登录))
+    - 极验 需要人工审核
+    - 网易易盾 行为验证码
+    - 友验 个人免费
+  - 设计协作工具
+    - 蓝湖
+    - 墨刀
+    - 摹客
 
 ## 八股文
 
