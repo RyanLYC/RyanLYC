@@ -51,6 +51,7 @@
 - [mini-vuex](https://github.com/RyanLYC/mini-vuex)
 - [esbuild 构建 Vue3 组件库](https://github.com/RyanLYC/vue3-component-library-esbuild)
 - [vue3 - ECharts - TypeScript 简易封装](./VUE/ECharts.md)
+- [vue.js 设计与实现](./VUE/vue.js设计与实现.md)
 
 ## React
 
