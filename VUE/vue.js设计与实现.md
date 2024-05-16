@@ -315,9 +315,50 @@
 #### 组件化
 
 1. 组件的实现原理
+   1. 组件的渲染机制 ：组件就是一个 VNode：const vnode= {type:MyComponent，render() { return 虚拟 DOM } };渲染依托于 render 函数-通过执行组件对象的 render 函数，得到一个新的 vnode
+   2. 组件的响应式更新：数据发生变化时候，视图重新渲染。组件中的 data 进行监听，在副作用函数 effect 中执行 render 函数
+      1. 监听 getter 行为和 setter 行为
+      2. 触发副作用函数 effect
+   3. setup 函数的实现：setup 函数的返回值两个
+      1. 返回一个对象：对象中的数据会暴露到渲染函数中
+      2. 返回一个函数：该函数将作为组件的渲染函数 render
+   4. 插槽的工作原理：插槽是在组件中预留几块位置，用来渲染父组件指定的内容：插槽会被编译成函数返回一个 vnode，存放于组件的 children 中，组件的 render 函数中执行
 2. 异步组件与函数式组件
-3. 内建组件和模块
+   1. 异步组件：当我们需要使用到的时候再加载出来。Vue 提供了 defineAsyncComponent 方法实现。defineAsyncComponent 返回一个包装组件，如果异步组件加载成功则渲染该组件，否则渲染一个注释点为占位内容
+   2. 函数式组件：就是一个函数接受 props，并 return vnode。所以函数式组件不能定义响应式数据
+3. 内置组件和模块
+   1. KeepAlive 组件的实现原理：就是避免其他组件被频繁销毁和创建；deactivated 卸载，把组件存放于隐藏容器中；activated 就是重新挂载，把组件从隐藏容器中取出
+   2. Teleport 组件的实现原理：指定组件渲染到文档流的指定位置上。在 patch 函数中判断 type 是不是 Object，执行 type.process 函数，在利用 patch 函数挂载到 to 指定的容器中
+   3. Transition 组件的实现原理：当 DOM 元素被挂载时，将动效附加到该 DOM 元素上；当 DOM 元素被卸载时，不要立即卸载，而是等到附加到该 DOM 元素上的动效执行完成后再卸载它。
+      1. 原生 DOM 动画：初始状态：enter-form；transform：translateX（200px）；结束状态：enter-to：transform：translateX（0）；运动状态:enter-active；transition: transform 1s ease-in-out；
+      2. 原理：本质就是控制类名的切换
 
 #### 编译器
 
+1. 编译器的核心运行流程
+   1. 编译器：把语言 A（源代码） 翻译为另一种语言 B（目标代码）：源代码 => 词法分析 => 语法分析 => 语义分析 => 中间代码生成 => 优化 => 目标代码生成 => 目标代码
+   2. vue 的编译过程就是把 template 模版转化为 render 渲染函数。模版 => 词法分析 => 语法分析 => 模版 AST => Transformer => JavaScript AST => 代码生成 => 渲染函数
+   ```js
+   <div>
+    <h1 :id="domId">Vue Template</h1>
+   </div>
+   // vue模版编译器处理后
+   function render(){
+    return h('div',[h('h1',{id:'domId'},'Vue Template')])
+   }
+   ```
+   3. 生成'AST'抽象语法树 就是 一个对象
+   4. 把 AST 转化为 JavaScript AST
+   5. 把 JavaScript AST 转化为渲染函数
+2. parse 解析模块就是把 template 模版转化为 AST 抽象语法树
+3. transform 转化模块是把 AST 转化为 JavaScript AST，基本上就是增加了一个代码生成节点，codegenNode，用来生成 render 函数
+4. generate 生成模块是生成 render 函数字符串，通过读取 JavaScript AST 拼接成字符串
+
 #### 服务端渲染
+
+- 同构渲染
+  - SSR 服务端渲染：浏览器 => 服务器（模版+数据） => 数据接口 => 数据库 => 服务器（HTML） => 浏览器
+  - CSR 客户端渲染
+  - 同构渲染
+    - 首次渲染 SSR 渲染
+    - 非首次渲染 CSR 渲染
