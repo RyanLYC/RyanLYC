@@ -17,14 +17,14 @@
         <div @click="() => alert('ok')">hello world</div>
         ```
    2. 性能与可维护性的权衡
-      - 结论：声明式代码的性能不优于命令式代码（命令式时间是直接修改的性能消耗，声明式找到差异的性能消耗+直接修改的性能消耗）
+      - 结论：声明式代码的性能不优于命令式代码(命令式时间是直接修改的性能消耗，声明式找到差异的性能消耗+直接修改的性能消耗)
       - 权衡的标准 - 在保持可维护性的同时让性能损失最小
    3. 虚拟 DOM 的性能到底如何
       1. DOM 运算要比 JavaScript 计算更加消耗性能
       2. 性能对比
          1. 创建页面的性能对比 - 性能相差不大因为主要消耗是在新建所有的 DOM 元素
          2. 更新页面的性能对比 - 虚拟 DOM 操作中对 DOM 的操作更少，虚拟 DOM 经过 diff 算法只需要更新必要的 DOM，而 innerHTML 需要销毁所有的旧 DOM 并新建所有的新 DOM
-      3. 最终结论：innerHTML（性能差） < 虚拟 DOM（可维护性强，性能不错） < 原生 JS（可维护性差，性能高）
+      3. 最终结论：innerHTML(性能差) < 虚拟 DOM(可维护性强，性能不错) < 原生 JS(可维护性差，性能高)
    4. 运行时和编译时
       1. 纯运行时
          - 提供一个虚拟 DOM 对象，利用 Render 渲染函数把虚拟 DOM 对象直接渲染为真实 DOM
@@ -46,7 +46,7 @@
       2. 虚拟 DOM：JS 对象
    2. 初始渲染器：渲染虚拟 DOM
    3. 组件的本质：一组 DOM 元素的封装：一个对象 tag: MyComponent => const MyComponent = function() { return { tag:'div',props:{...},children: '6666' } } => 渲染器渲染 mountElement 渲染元素，mountComponent 渲染组件
-   4. 模版的工作原理（浏览器不认识 template）
+   4. 模版的工作原理(浏览器不认识 template)
       1. 解释模版成 render 函数
       2. 通过 render 渲染为真实 DOM
    5. vue.js 是各个模块组成的有机整体
@@ -113,13 +113,13 @@
      }
    });
    ```
-2. 非原始值（引用类型）的响应式方案
+2. 非原始值(引用类型)的响应式方案
    1. Proxy：对一个对象 **基本语义**的代理。它允许我们拦截并重新定义对一个对象的基本操作；例如：obj.foo 读取属性 foo 的值；obj.foo++读取和设置属性 foo 的值 这样的代码就叫基本语义
    2. Reflect：是一个内置对象，它踢动拦截 JavaScript 操作的方法。这些方法与 proxy handler 的方法相同。Reflect 不是一个函数对象，因此它是不可构造的。
    ```js
    var obj = { x: 1 };
    Reflect.get(obj, "x"); // 1 等同于obj.x
-   // 真正的作用是第三个参数：如果target对象（第一个参数）中指定了getter，receiver（第三个参数本身）则为getter调用时的this值（改变this指向）
+   // 真正的作用是第三个参数：如果target对象(第一个参数)中指定了getter，receiver(第三个参数本身)则为getter调用时的this值(改变this指向)
    const p = {
      ln: "l",
      fn: "s",
@@ -141,7 +141,7 @@
    console.log(proxy.fullName); // 触发一次getter行为
    ```
 3. 原始值(值类型)的响应式方案
-   1. ref：1. 声明原始值的响应性（proxy 不能代理简单数据类型，那么 ref 是如何监听 getter 和 setter 行为） 2. 数据访问必须使用.value
+   1. ref：1. 声明原始值的响应性(proxy 不能代理简单数据类型，那么 ref 是如何监听 getter 和 setter 行为) 2. 数据访问必须使用.value
    2. ref 代理的实现
       1. 针对于非原始值的数据类型：toReactive 方法 交给 reactive 处理
       2. 针对原始值数据类型：vue 通过 get、set 函数标记符，让函数以属性调用的形式被触发
@@ -174,7 +174,7 @@
    1. 渲染器与响应系统的结合
       - 渲染器的作用：渲染真实 DOM
       - 结合响应系统： 副作用中执行渲染函数
-   2. 渲染器的基本概念：渲染器与渲染函数：createRender 渲染器 return render，render 渲染函数（vnode, container）;渲染过程 1. 挂载：mount（首次渲染） 2. 打补丁：patch 包括更新节点（新节点替换旧节点）和删除节点 render(null,container)
+   2. 渲染器的基本概念：渲染器与渲染函数：createRender 渲染器 return render，render 渲染函数(vnode, container);渲染过程 1. 挂载：mount(首次渲染) 2. 打补丁：patch 包括更新节点(新节点替换旧节点)和删除节点 render(null,container)
    3. 渲染器 - 伪代码实现
    ```js
    // 伪代码实现
@@ -264,8 +264,8 @@
 2. 挂载与更新
    1. 节点： 在 HTML DOM 中，所有事物都是节点，标签名、属性、文本、注释等
    2. 节点与属性的挂载：
-      - 属性的特殊性：属性划分为 HTML Attributes（html 属性例如 id type value） 和 DOM Properties（js 属性 DOM 对象上的属性）；两者对应的属性 例如 id & el.id；两张不对应的属性例如：class & el.className；源码中根据元素来判断使用 el.type 获取 还是 el.getAttribute('type')
-      - 针对 class 和 style 的特殊处理： 把下面三种都转化为字符串处理，在使用 el.className（性能更优于 setAttribute） 挂载
+      - 属性的特殊性：属性划分为 HTML Attributes(html 属性例如 id type value) 和 DOM Properties(js 属性 DOM 对象上的属性)；两者对应的属性 例如 id & el.id；两张不对应的属性例如：class & el.className；源码中根据元素来判断使用 el.type 获取 还是 el.getAttribute('type')
+      - 针对 class 和 style 的特殊处理： 把下面三种都转化为字符串处理，在使用 el.className(性能更优于 setAttribute) 挂载
         - 字符串
         - 对象
         - 数组
@@ -330,13 +330,13 @@
    1. KeepAlive 组件的实现原理：就是避免其他组件被频繁销毁和创建；deactivated 卸载，把组件存放于隐藏容器中；activated 就是重新挂载，把组件从隐藏容器中取出
    2. Teleport 组件的实现原理：指定组件渲染到文档流的指定位置上。在 patch 函数中判断 type 是不是 Object，执行 type.process 函数，在利用 patch 函数挂载到 to 指定的容器中
    3. Transition 组件的实现原理：当 DOM 元素被挂载时，将动效附加到该 DOM 元素上；当 DOM 元素被卸载时，不要立即卸载，而是等到附加到该 DOM 元素上的动效执行完成后再卸载它。
-      1. 原生 DOM 动画：初始状态：enter-form；transform：translateX（200px）；结束状态：enter-to：transform：translateX（0）；运动状态:enter-active；transition: transform 1s ease-in-out；
+      1. 原生 DOM 动画：初始状态：enter-form；transform：translateX(200px)；结束状态：enter-to：transform：translateX(0)；运动状态:enter-active；transition: transform 1s ease-in-out；
       2. 原理：本质就是控制类名的切换
 
 #### 编译器
 
 1. 编译器的核心运行流程
-   1. 编译器：把语言 A（源代码） 翻译为另一种语言 B（目标代码）：源代码 => 词法分析 => 语法分析 => 语义分析 => 中间代码生成 => 优化 => 目标代码生成 => 目标代码
+   1. 编译器：把语言 A(源代码) 翻译为另一种语言 B(目标代码)：源代码 => 词法分析 => 语法分析 => 语义分析 => 中间代码生成 => 优化 => 目标代码生成 => 目标代码
    2. vue 的编译过程就是把 template 模版转化为 render 渲染函数。模版 => 词法分析 => 语法分析 => 模版 AST => Transformer => JavaScript AST => 代码生成 => 渲染函数
    ```js
    <div>
@@ -357,7 +357,7 @@
 #### 服务端渲染
 
 - 同构渲染
-  - SSR 服务端渲染：浏览器 => 服务器（模版+数据） => 数据接口 => 数据库 => 服务器（HTML） => 浏览器
+  - SSR 服务端渲染：浏览器 => 服务器(模版+数据) => 数据接口 => 数据库 => 服务器(HTML) => 浏览器
   - CSR 客户端渲染
   - 同构渲染
     - 首次渲染 SSR 渲染
