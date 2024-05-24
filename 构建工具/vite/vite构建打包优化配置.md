@@ -69,22 +69,38 @@ manualChunks(id) {
 ```
 
 4. 组件按需导入
-   unplugin-vue-components 插件。查看 element-plus 文档
-5. 清除 console 和 debugger
 
 ```js
+// unplugin-vue-components 插件。查看 element-plus 文档
+```
+
+5. 清除 console 和 debugger
+   vite 打包时压缩代码的方式有两种。
+
+   - esbuild
+   - terser
+
+默认启动的是 esbuild 进行代码压缩。 esbuild，比 terser 快 20-40 倍，压缩率只差 1%-2%。
+
+```js
+// esbuild
+esbuild: {
+  pure: ['console.log'], // 删除 console.log
+  drop: ['debugger'], // 删除 debugger
+},
 // npm install  terser  -D
 //  build里添加terserOptions的配置
 // 打包环境移除console.log，debugger
+minify: 'terser', // 启用 terser 压缩
 terserOptions: {
   compress: {
-    drop_console: true,
-    drop_debugger: true
-  }
+    drop_console: true, // 打包时删除console
+    drop_debugger: true, // 打包时删除 debugger
+  },
 },
 ```
 
-6. 图片资源压缩
+1. 图片资源压缩
 
 ```js
 // npm i vite-plugin-imagemin -D
