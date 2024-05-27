@@ -294,6 +294,7 @@
   - [EventLoop](./面试题/JavaScript/EventLoop.md)
   - [Set-Map-WeakSet-WeakMap 的区别](./面试题/JavaScript/Set-Map-WeakSet-WeakMap的区别.md)
   - [原型&原型链](./面试题/JavaScript/原型链.md)
+  - [JS 执行原理](./面试题/JavaScript/JS执行原理.md)
 - VUE
   - [vue 组件间通信方式](./VUE/vue组件间传值方式.md)
   - [vue3 内置指令](https://cn.vuejs.org/api/built-in-directives.html#v-text)
