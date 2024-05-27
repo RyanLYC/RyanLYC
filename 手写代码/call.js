@@ -4,7 +4,7 @@
 Function.prototype._call = function (ctx, ...args) {
   const obj = ctx || window;
   const key = Symbol();
-  obj[key] = this;
+  obj[key] = this; // this 指向的是调用call的对象，即是需要执行的函数
   const result = obj[key](...args);
   delete obj[key];
   return result;
