@@ -295,6 +295,18 @@
   - [Set-Map-WeakSet-WeakMap 的区别](./面试题/JavaScript/Set-Map-WeakSet-WeakMap的区别.md)
   - [原型&原型链](./面试题/JavaScript/原型链.md)
   - [JS 执行原理](./面试题/JavaScript/JS执行原理.md)
+  - [函数的参数 arguments 是数组吗？]
+    - 不是数组，是一个类数组对象。
+    ```js
+    var arguments = {
+      length: 2,
+      0: 1,
+      1: "name",
+    };
+    // 使用数组的函数的方式
+    [].push.call(arguments, "abc");
+    Array.prototype.push.call(arguments, "abc");
+    ```
 - VUE
   - [vue 组件间通信方式](./VUE/vue组件间传值方式.md)
   - [vue3 内置指令](https://cn.vuejs.org/api/built-in-directives.html#v-text)
