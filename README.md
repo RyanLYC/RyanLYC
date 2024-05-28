@@ -119,6 +119,7 @@
 - [input throtte demo](./手写代码/input-throtte.html)
 - [deepClone](./手写代码/deepClone.js)
 - [清除字符串前后的空格的函数](./手写代码/清除字符串前后的空格的函数.js)
+- [new](./手写代码/new.js)
 
 ## 工具
 
@@ -289,7 +290,6 @@
   - [类型检测](./面试题/JavaScript/类型检测.md)
   - [let-const-var](./面试题/JavaScript/let-const-var.md)
   - [let-const-var 区别的实现原理是什么](./面试题/JavaScript/let-const-var区别的实现原理是什么.md)
-  - [new 做了些什么](./面试题/JavaScript/new做了些什么.md)
   - [原型改造输出](./面试题/JavaScript/原型改造输出.md)
   - [EventLoop](./面试题/JavaScript/EventLoop.md)
   - [Set-Map-WeakSet-WeakMap 的区别](./面试题/JavaScript/Set-Map-WeakSet-WeakMap的区别.md)
