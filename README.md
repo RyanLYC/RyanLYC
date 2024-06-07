@@ -120,6 +120,7 @@
 - [deepClone](./手写代码/deepClone.js)
 - [清除字符串前后的空格的函数](./手写代码/清除字符串前后的空格的函数.js)
 - [new](./手写代码/new.js)
+- [Promise](./手写代码/promise.js)
 
 ## 工具
 
