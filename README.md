@@ -294,9 +294,7 @@
   - [call-apply-bind 区别](./面试题/JavaScript/call-apply-bind区别.md)
   - [类型检测](./面试题/JavaScript/类型检测.md)
   - [let-const-var](./面试题/JavaScript/let-const-var.md)
-  - [let-const-var 区别的实现原理是什么](./面试题/JavaScript/let-const-var区别的实现原理是什么.md)
   - [原型改造输出](./面试题/JavaScript/原型改造输出.md)
-  - [EventLoop](./面试题/JavaScript/EventLoop.md)
   - [Set-Map-WeakSet-WeakMap 的区别](./面试题/JavaScript/Set-Map-WeakSet-WeakMap的区别.md)
   - [原型&原型链](./面试题/JavaScript/原型链.md)
   - [JS 执行原理](./面试题/JavaScript/JS执行原理.md)
@@ -312,6 +310,7 @@
     [].push.call(arguments, "abc");
     Array.prototype.push.call(arguments, "abc");
     ```
+  - [柯里化](./面试题/JavaScript/柯里化.md)
 - VUE
   - [vue 组件间通信方式](./VUE/vue组件间传值方式.md)
   - [vue3 内置指令](https://cn.vuejs.org/api/built-in-directives.html#v-text)
