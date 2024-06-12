@@ -42,7 +42,7 @@ function test() {
   - 当宏任务执行完毕，开始检查渲染，然后 GUI 线程接管渲染
   - 渲染完毕后，js 线程继续接管，开始下一个宏任务（从事件队列中获取）
 
-##### Node 中的 event-loop
+##### Node 中的 event-loop 流程
 
 - timers 这个阶段处理 setTimeout()和 setInterval()定时器相关的任务
 - pending callbacks 这个阶段处理除定时器之外，所有通过异步 I/O 操作回调函数返回的任务
