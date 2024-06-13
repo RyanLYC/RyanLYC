@@ -290,7 +290,6 @@
   - [面向对象面试题](./面试题/JavaScript/面向对象面试题.md)
   - [输出以下代码的执行结果并解释为什么](./面试题/JavaScript/输出以下代码的执行结果并解释为什么.md)
   - [数组](./面试题/JavaScript/数组.md)
-  - [变量提升](./面试题/JavaScript/变量提升.md)
   - [call-apply-bind 区别](./面试题/JavaScript/call-apply-bind区别.md)
   - [类型检测](./面试题/JavaScript/类型检测.md)
   - [let-const-var](./面试题/JavaScript/let-const-var.md)
