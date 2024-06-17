@@ -363,3 +363,16 @@
     - extends:使一个组件可以继承另一个组件的组件选项。
     - slots
     - composition api 逻辑复用
+  - keep-alive 缓存
+    - router 中的 meta 的 noCache: true // 如果设置为 true，则不会被 <keep-alive> 缓存(默认 false)
+    - keep-alive 中的插槽的 :key 改变的时候将 router-view 重新渲染了，不使用缓存。去掉即可
+      ````html
+      <router-view v-slot="{ Component, route }" ':key="route.path"'>
+        <transition name="fade-transform" mode="out-in">
+          <keep-alive :include="cachedViews">
+            <component :is="Component" :key="route.path" />
+          </keep-alive>
+        </transition> </router-view
+      >```
+      ````
+    - template 只能存在一个根标签，当存在两个根标签的情况不缓存（当注释和根标签同时存在并且是兄弟时，也不缓存）
