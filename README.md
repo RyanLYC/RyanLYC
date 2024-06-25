@@ -103,6 +103,7 @@
 - [vite](./构建工具/vite/README.md)
   - [mini-vite](https://github.com/RyanLYC/mini-vite)
   - [vite 构建打包优化配置](./构建工具/vite/vite构建打包优化配置.md)
+  - [关于 vite 的静态资源](./构建工具/vite/关于vite的静态资源.md)
 - [webpack](./构建工具/webpack/README.md)
   - [webpack5 federation](https://github.com/RyanLYC/module-federation-webpack5)
   - [mini-webpack](https://github.com/RyanLYC/mini-webpack-js)
