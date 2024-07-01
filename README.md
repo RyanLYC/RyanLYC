@@ -56,7 +56,7 @@
 - [esbuild 构建 Vue3 组件库](https://github.com/RyanLYC/vue3-component-library-esbuild)
 - [vue3 - ECharts - TypeScript 简易封装](./VUE/ECharts.md)
 - [vue.js 设计与实现](./VUE/vue.js设计与实现.md)
-- [vue2 的高级用法 - vue2(2.7.14) - @vue/cli 5.0.8](https://github.com/vuejs/vue)
+- [vue2 的高级用法 - [vue2(2.7.14)]((https://github.com/vuejs/vue)) - @vue/cli 5.0.8](./笔记/vue2/vue2的高级用法.md)
 
 ## React
 
