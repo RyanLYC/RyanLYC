@@ -46,6 +46,7 @@
 
 - [vue 3.4 版本](https://blog.vuejs.org/posts/vue-3-4) - [掘金中文](https://juejin.cn/post/7329280514627256361)
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
+- [vue3.4 项目模版](https://github.com/RyanLYC/vue3.4-template)
 - [Vue3.2setup 语法糖](./VUE/Vue3.2setup语法糖.md)
 - [vue-router4.0 钩子函数&执行流程](https://github.com/RyanLYC/vue-router4-course)
 - [vue3.3 组件库](https://github.com/RyanLYC/vite-components) & [文档地址](https://ryanlyc.github.io/vite-components-last/components/button)
