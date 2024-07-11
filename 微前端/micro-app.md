@@ -2,6 +2,15 @@
 
     将一个大型的前端应用划分为多个独立的小型应用。（化整为零）多个团队共同开发多个模块。
 
+框架：
+
+- EMP
+- Micro-app
+- wujie
+- qiankun
+- iframe
+- single-spa
+
 #### 微前端实现方案
 
 - IFrame
