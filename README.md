@@ -6,7 +6,7 @@
 - [npm-yarn-pnpm](./架构/cmd.md)
 - [帮助文档](./架构/在线帮助文档.md) - to do
 - [脚手架](./架构/脚手架.md)
-- [前端监控](./架构/前端监控.md) & [前端监控平台源码](https://github.com/RyanLYC/front-end-monitor)
+- [前端监控](./架构/前端监控.md) & [前端监控平台源码](https://github.com/RyanLYC/front-end-monitor) & [前端稳定性监控平台源码(增加拦截 xhr、fetch 请求、并核心模块化)](https://github.com/RyanLYC/monitor)
 - [微前端-micro-app](./微前端/micro-app.md) & [项目源码](https://github.com/RyanLYC/micro-app)
 - [前端性能优化](./架构/前端性能优化.md)
 
