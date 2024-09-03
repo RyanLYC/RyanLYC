@@ -45,6 +45,16 @@
 
 ## Vue
 
+- [vue 3.5 版本]( Alpha 阶段)
+
+  - 响应式属性解构
+  - useTemplateRef
+  - useId
+  - SSR 相关改进
+  - 支持直接在 Transition 内部嵌套 Teleport
+  - app.onUnmount()用于注册清理函数
+  - onScopeDispose 的 failSilently 参数
+
 - [vue 3.4 版本](https://blog.vuejs.org/posts/vue-3-4) - [掘金中文](https://juejin.cn/post/7329280514627256361)
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
 - [vue3.4 项目模版](https://github.com/RyanLYC/vue3.4-template)
