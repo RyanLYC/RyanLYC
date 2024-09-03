@@ -67,6 +67,16 @@
 - [实现自己的 React18 - to do]()
 - [React 企业开发模版 - to do](https://github.com/RyanLYC/react-template)
 
+## SSR
+
+- Vite + Vue3 + TS + SSR 的基本原理
+  - 通过 Vue 的 server-renderer 模块将 Vue 应用实例转换成一段纯文本的 HTML 字符串
+  - 通过 Nodejs 创建一个静态 Web 服务器
+  - 通过 NodeJS 将服务端锁转换好的 HTML 结构发送到浏览器与 Client 进行 Hydrate
+  - [vue3-ts-vite-ssr-starter](https://github.com/vok123/vue3-ts-vite-ssr-starter)
+  - [asyncData 方式 demo](https://github.com/lincenying/vite-vue3-h5-ssr)
+  - [爱此迎](https://github.com/RyanLYC/airbnb-ssr)
+
 ## NodeJS
 
 - [Express 与 Koa2 之间的区别](./NodeJS/Express与Koa2.md)
