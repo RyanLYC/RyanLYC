@@ -76,6 +76,7 @@
   - [vue3-ts-vite-ssr-starter](https://github.com/vok123/vue3-ts-vite-ssr-starter)
   - [asyncData 方式 demo](https://github.com/lincenying/vite-vue3-h5-ssr)
   - [爱此迎](https://github.com/RyanLYC/airbnb-ssr)
+- Nuxt3 to do...
 
 ## NodeJS
 
