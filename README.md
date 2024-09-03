@@ -88,6 +88,8 @@
   - [爱此迎](https://github.com/RyanLYC/airbnb-ssr)
 - Nuxt3 to do...
 
+## [DevOps 基于 Jenkins](./架构/Jenkins.md)
+
 ## NodeJS
 
 - [Express 与 Koa2 之间的区别](./NodeJS/Express与Koa2.md)
