@@ -6,6 +6,8 @@ sudo mkdir -p /var/jenkins_home
 # 赋权
 sudo chmod 777 /var/jenkins_home
 
+# sudo chown -R 1000:1000 /var/jenkins_home
+
 # 新版本
 docker pull jenkins/jenkins:2.476-jdk21
 
@@ -18,21 +20,8 @@ docker run --name jenkins -itd \
   -v /etc/localtime:/etc/localtime:ro \
   -e JAVA_OPTS="-Dsun.jnu.encoding=UTF-8 -Dfile.encoding=UTF-8 -Duser.timezone=Asia/Shanghai" \
   --restart=always \
-  --user=root \
   --privileged=true \
   jenkins/jenkins:2.476-jdk21
-
-# 老版本
-# docker pull jenkins/jenkins:2.289.3-lts-centos
-
-# docker run --name jenkins -itd \
-#   -p 8082:8080 \
-#   -p 50000:50000 \
-#   -v /var/jenkins_home:/var/jenkins_home \
-#   -e JAVA_OPTS="-Dorg.apache.commons.jelly.tags.fmt.timeZone='Asia/Shanghai'" \
-#   --privileged=true \
-#   --restart=always \
-#   jenkins/jenkins:2.289.3-lts-centos
 
 # 阿里云开端口 8082 50000
 
@@ -45,9 +34,7 @@ docker logs jenkins
 
 ```
 
-### 新建节点
-
-- 安装 jdk21
+### 安装 jdk21
 
 ```shell
 wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
@@ -70,38 +57,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 source /etc/profile
 ```
 
-- 测试 连接的 命令，成功后可以正常使用
-
-```shell
-
-# 下载
-curl -sO http://8.134.104.190:8082/jnlpJars/agent.jar
-
-# 赋权
-sudo chmod 777 /var/jenkins_home/data
-
-# 测试
-java -jar agent.jar -url http://8.134.104.190:8082/ -secret d6221447c3f910a80e845b04c3993d4780bd96397c56aab018dd3c7abaa18fba -name build01 -workDir "/var/jenkins_home/data"
-
-```
-
-- 创建 sh 脚本
-
-```shell
-# 创建
-sudo vi start.sh
-
-# 内容
-nohup java -jar agent.jar -url http://8.134.104.190:8082/ -secret @secret-file -name build01 -workDir "/var/jenkins_home/data" >>/dev/null &
-
-# 运行
-sh start.sh
-```
-
-### 安装插件 Pipeline: Groovy Libraries Pipeline: Stage Step Pipeline: Job
-
-- Pipeline
-- Role-based Authorization Strategy
+### 安装推荐插件
 
 ### 安装 GitLabServer
 
@@ -197,7 +153,6 @@ docker exec -it gitlab-ce grep 'Password:' /etc/gitlab/initial_root_password
 
 ```shell
 docker exec -it jenkins bash
-# docker exec -it -u root jenkins bash
 
 ssh-keygen -t rsa -C "jenkins"
 # 回车
@@ -213,4 +168,32 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 # github 密码方式
 # 账户随便填
 # 密码 使用 github token 即可拉取代码
+```
+
+### 新建节点
+
+`注意：目录为  /var/jenkins_home/data   工具位置需要配置，例如git  目录修改为 /usr/bin/git (机器运行 which git 查看)`
+
+```shell
+
+# java 启动 权限问题导致 不行。master 节点可以。
+# 下载
+curl -sO http://8.134.104.190:8082/jnlpJars/agent.jar
+
+
+# 测试
+java -jar agent.jar -url http://8.134.104.190:8082/ -secret 0726b641fa4846a07bfbefa3884cf6383f4b19c8612867d83c7afb1f90112dbd -name build -webSocket -workDir "/var/jenkins_home/data"
+```
+
+- 创建 sh 脚本
+
+```shell
+# 创建
+sudo vi start.sh
+
+# 内容
+nohup java -jar agent.jar -url http://8.134.104.190:8082/ -secret c3ee18e73eaf53f598e0f8a389c0d0c326de0474cb69711055f317180eebdab1 -name build01 -webSocket -workDir "/var/jenkins_home/data" >>/dev/null &
+
+# 运行
+sh start.sh
 ```
