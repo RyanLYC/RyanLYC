@@ -1,5 +1,7 @@
 ### CentOS7 安装 docker & docker compose
 
+https://docs.docker.com/engine/install/centos/
+
 ```shell
 # 更新系统软件包列表
  sudo yum upgrade -y
@@ -30,7 +32,7 @@ docker --version
 sudo mkdir -p /etc/docker
 
 # 在docker目录下新建一个daemon.json文件，然后把下面的内容输出到这个文件中去
-#   这样以后下载镜像都会从阿里云去下载
+#   这样以后下载镜像都会从阿里云去下载   不行就更换 为 https://docker.1ms.run
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
   "registry-mirrors": ["https://u4qe651h.mirror.aliyuncs.com"]

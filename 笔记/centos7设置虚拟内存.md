@@ -32,8 +32,9 @@ sudo virt-what
 
 ```shell
 # 使用dd命令创建一个swap交换文件
-# 建立一个/home/swap的分区文件，大小为1G。
-sudo dd if=/dev/zero of=/home/swap bs=1024 count=1024k
+# 建立一个/home/swap的分区文件，大小为4G。
+sudo dd if=/dev/zero of=/home/swap bs=512 count=8388616
+# 注意：创建swap大小为bs*count=4294971392(4G)
 
 # 制作为swap格式文件
 sudo mkswap /home/swap
