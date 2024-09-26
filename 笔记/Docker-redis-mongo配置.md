@@ -3,7 +3,7 @@
 #### 安装
 
 ```shell
-docker pull redis:7
+docker pull redis:7.0
 ```
 
 #### 启动容器并带密码
@@ -71,7 +71,7 @@ ping
 #### 安装
 
 ```shell
-docker pull mongo
+docker pull mongo:5.0
 ```
 
 ### Nginx

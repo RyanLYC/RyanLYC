@@ -7,7 +7,7 @@
 1. 登录阿里云 ssh ryan@8.134.104.190
 2. docker pull sonatype/nexus3
 3. 查看镜像 docker images
-4. 建立数据存放目录 cd /usr/local -> sudo mkdir nexus3 -> sudo chmod 777 -R /usr/local/nexus3 -> cd nexus3 -> mkdir data
+4. 建立数据存放目录 cd /usr/local -> sudo mkdir nexus3 -> sudo chmod 777 -R /usr/local/nexus3 -> cd nexus3 -> mkdir data -> sudo chmod 777 -R /usr/local/nexus3/data
 5. 启动容器 docker run -itd --privileged=true -d -e "INSTALL4J_ADD_VM_PARAMS=-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m -Djava.util.prefs.userRoot=/nexus-data/javaprefs" --name nexus3 -p 8081:8081 -v /usr/local/nexus3/data:/nexus-data sonatype/nexus3
 
 `nexus3 默认启动是 2703M 内存， 如果内存不够， 会启动失败。 error='Cannot allocate memory' (errno=12)`
