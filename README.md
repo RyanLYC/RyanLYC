@@ -42,6 +42,7 @@
 - [前端模块化详解](./笔记/前端模块化详解.md)
 - [JS 垃圾回收、event-loop](./笔记/JS垃圾回收.md)
 - [HTTP 缓存 & 本地缓存](./笔记/缓存.md)
+- [Monorepo 项目搭建 - pnpm](./笔记/Monorepo项目搭建.md)
 
 ## Vue
 
@@ -85,7 +86,7 @@
   - 通过 NodeJS 将服务端锁转换好的 HTML 结构发送到浏览器与 Client 进行 Hydrate
   - [vue3-ts-vite-ssr-starter](https://github.com/vok123/vue3-ts-vite-ssr-starter)
   - [asyncData 方式 demo](https://github.com/lincenying/vite-vue3-h5-ssr)
-  - [爱此迎](https://github.com/RyanLYC/airbnb-ssr)
+  - [爱此迎-vite5 ssr 项目](http://liangyancheng.cn:3000/) - [源码](https://github.com/RyanLYC/airbnb-ssr)
 - Nuxt3 to do...
 
 ## [DevOps 基于 Jenkins](./架构/Jenkins.md)
@@ -131,6 +132,7 @@
 
 - [vite](./构建工具/vite/README.md)
   - [mini-vite](https://github.com/RyanLYC/mini-vite)
+  - [mini-vite2](https://github.com/RyanLYC/mini-vite2)
   - [vite 构建打包优化配置](./构建工具/vite/vite构建打包优化配置.md)
   - [关于 vite 的静态资源](./构建工具/vite/关于vite的静态资源.md)
 - [webpack](./构建工具/webpack/README.md)
