@@ -1,4 +1,4 @@
-# 前端架构师进阶之路
+# 前端架全栈进阶之路
 
 ## [架构](./架构/README.md)
 
@@ -411,3 +411,7 @@
   - vue3 错误处理
     - 全局错误处理器 config.errorHandler
     - 组件级错误捕获器 onErrorCaptured
+
+## 自动化测试
+
+- [Python + PyTest + Allure 接口自动化测试框架 + Demo + 连接 mysql 数据验证](https://github.com/RyanLYC/system_api_autotest)
