@@ -72,6 +72,7 @@
 - [vue2 的高级用法 - [vue2(2.7.14)]https://github.com/vuejs/vue - @vue/cli 5.0.8](./笔记/vue2/vue2的高级用法.md)
 - [vue 状态管理](./笔记/vue状态管理.md)
 - [vue3-smooth-dnd-ts](https://github.com/RyanLYC/vue3-smooth-dnd-ts)
+- [Pinia 相关](./VUE/pinia.md)
 
 ## React
 
