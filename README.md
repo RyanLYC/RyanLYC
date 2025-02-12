@@ -24,7 +24,7 @@
   3. 拦截 axios 请求，直接使用对应的接口文件
 - [图片懒加载](https://github.com/RyanLYC/ImgLazyLoad)
 - [工具函数库](https://github.com/RyanLYC/zg-utils)
-- [monorepo](https://github.com/RyanLYC/monorepo)
+- [monorepo](./笔记/monorepo.md) [Demo](https://github.com/RyanLYC/monorepo)
 - [大文件上传](https://github.com/RyanLYC/file_upload)[后台](https://github.com/RyanLYC/koa-mongodb)
 - [网页置灰方案](https://github.com/RyanLYC/pagegray)
 - [传统部署模式-pm2-eggJS-cluster](./笔记/传统部署模式.md)
