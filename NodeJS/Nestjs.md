@@ -1,4 +1,6 @@
-### NestJS
+### [NestJS](https://nest.nodejs.cn/)
+
+Nest (NestJS) 是一个用于构建高效、可扩展的 Node.js 服务器端应用的框架。它使用渐进式 JavaScript，构建并完全支持 TypeScript（但仍然允许开发者使用纯 JavaScript 进行编码）并结合了 OOP（面向对象编程）、FP（函数式编程）和 FRP（函数式反应式编程）的元素。
 
 #### 特点
 
@@ -8,30 +10,6 @@
 - 装饰器风格
 - 模块加载采用依赖注入 IOC 方式（Spring 与 AngularJS）
 - 配套功能齐备（鉴权、文档、微服务、CLI、GraphQL）
-
-#### CLI 生成代码
-
-```shell
-nest g mo **** #生成Module
-nest g co **** #生成Controller
-nest g s ***** #生成Service
-nest g resource ***** #生成一套Restful风格接口
-```
-
-#### RESTful API 风格
-
-- Resources 资源
-  - 网络上的文本、图片、文件
-  - http://baidu.com/users/
-- Representation 表现层
-  - 格式 json、xml、html 格式
-  - 应该在 Http 的请求头信息中有 Accept 和 Content-Type 字段指定
-- State transfer 状态转化
-  - Get 读取
-  - Post 新建
-  - Put 更新
-  - Patch 部分更新
-  - Delete 删除
 
 #### Swagger 接口文档
 
@@ -79,10 +57,38 @@ app.useGlobalPipes(
 #### [文档](https://docs.nestjs.cn/)
 
 [10](https://docs.nestjs.cn/10/introduction)
+[11](https://nest.nodejs.cn/)
+[10 迁移 11](https://nest.nodejs.cn/migration-guide)
 
 #### NodeJS 环境
 
 - nvm
+
+#### CLI 生成代码
+
+```shell
+nest g mo **** #生成Module
+nest g co **** #生成Controller
+nest g s ***** #生成Service
+nest g resource ***** #生成一套Restful风格接口
+
+nest g co user --no-spec #不要测试文件 -d 查看创建什么，不创建
+```
+
+#### RESTful API 风格
+
+- Resources 资源
+  - 网络上的文本、图片、文件
+  - http://baidu.com/users/
+- Representation 表现层
+  - 格式 json、xml、html 格式
+  - 应该在 Http 的请求头信息中有 Accept 和 Content-Type 字段指定
+- State transfer 状态转化
+  - Get 读取
+  - Post 新建
+  - Put 更新
+  - Patch 部分更新
+  - Delete 删除
 
 #### NestJS CLI
 
@@ -106,7 +112,7 @@ degit 模版项目git地址 目录名
 #### 调试 Node 应用
 
 - 单文件入口调试： 小虫子按钮 -》launch.json 文件 -》 修改入口文件 program 的{}后 -》 没有 ts 的时候删除 preLaunchTask -》 启动调试注意 name 一致
-- 通过执行 npm run dev:debug 来调试：小虫子按钮 -》launch.json 文件 -》 configurations 中输入 npm，选择通过 npm 启动 -》runtimeArgs 下面的 debug 改为 dev:debug -》 增加"runtimeVersion":"nodejs 的版本号" -》 可选的 internalConsoleOptions:neverOpen
+- (推荐) 通过执行 npm run dev:debug 来调试：小虫子按钮 -》launch.json 文件 -》 configurations 中输入 npm，选择通过 npm 启动 -》runtimeArgs 下面的 debug 改为 dev:debug -》 增加"runtimeVersion":"nodejs 的版本号" -》 可选的 internalConsoleOptions:neverOpen
 
 #### 安装 docker
 
@@ -117,7 +123,7 @@ degit 模版项目git地址 目录名
   - [portainer.io 社区版免费](https://www.portainer.io/)
 - docker 镜像加速
 
-#### Nestjs 声明周期
+#### Nestjs 生命周期
 
 客户端 -> 中间件(全局中间件、模块中间件) -> 守卫(全局守卫、控制器守卫、路由守卫) -> 拦截器(全局拦截器 pre、控制器拦截器 pre、路由拦截器 pre (pre 前置)) -> 管道(全局管道、控制器管道、路由管道、路由参数管道) -> 控制器 -> 服务 -> 拦截器(路由拦截器 post、控制器拦截器 post、全局拦截器 post (post 后置)) -> 过滤器(路由过滤器、控制器过滤器、全局过滤器) -> 响应 -> 客户端
 
@@ -176,6 +182,9 @@ nest g mo common/config --no-spec
 ```
 
 #### 日志
+
+- pino
+- winston
 
 ```shell
 pnpm i winston nest-winston
@@ -421,8 +430,8 @@ npm install --save mjml
   - nest g mo database/prisma --no-spec
   - nest g s database/prisma --no-spec
   - npx prisma db push
-- [TypeORM](https://docs.nestjs.cn/10/recipes?id=typeorm)
-  - pnpm install --save typeorm mysql2
+- [TypeORM](https://nest.nodejs.cn/techniques/database)
+  - pnpm install --save @nestjs/typeorm typeorm mysql2
 - [mongoose](https://docs.nestjs.cn/10/recipes?id=mongoose)
   - pnpm install --save mongoose
   - pnpm install --save-dev @types/mongoose
@@ -449,6 +458,180 @@ npm install --save mjml
   }
 ```
 
+#### TypeORM 数据表关系描述
+
+1. 1 对 1 关系 例如 user 与 profile 表
+
+```ts
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Logs } from "../logs/logs.entity";
+import { Roles } from "../roles/roles.entity";
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  username: string;
+
+  @Column()
+  password: string;
+}
+```
+
+```ts
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { User } from "./user.entity";
+
+@Entity()
+export class Profile {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  gender: number;
+
+  @Column()
+  photo: string;
+
+  @Column()
+  address: string;
+
+  @OneToOne(() => User)
+  @JoinColumn() // @JoinColumn({ name: 'user_id' }) // 如果不写默认是 userId
+  user: User;
+}
+```
+
+2. 1 对多关系 例如 user 与 logs
+
+```ts
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Logs } from "../logs/logs.entity";
+import { Roles } from "../roles/roles.entity";
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  username: string;
+
+  @Column()
+  password: string;
+
+  // typescript -> 数据库 关联关系 Mapping
+  @OneToMany(() => Logs, (logs) => logs.user)
+  logs: Logs[];
+}
+```
+
+```ts
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { User } from "../user/user.entity";
+
+@Entity()
+export class Logs {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  path: string;
+
+  @Column()
+  methods: string;
+
+  @Column()
+  data: string;
+
+  @Column()
+  result: number;
+
+  @ManyToOne(() => User, (user) => user.logs)
+  @JoinColumn()
+  user: User;
+}
+```
+
+3. 多对多关系 例如 用户 与 角色
+   多对多关系会生成一张关系表
+
+```ts
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Logs } from "../logs/logs.entity";
+import { Roles } from "../roles/roles.entity";
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  username: string;
+
+  @Column()
+  password: string;
+
+  // typescript -> 数据库 关联关系 Mapping
+  @OneToMany(() => Logs, (logs) => logs.user)
+  logs: Logs[];
+
+  @ManyToMany(() => Roles, (roles) => roles.users)
+  @JoinTable({ name: "users_roles" })
+  roles: Roles[];
+}
+```
+
+```ts
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "../user/user.entity";
+
+@Entity()
+export class Roles {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @ManyToMany(() => User, (user) => user.roles)
+  users: User[];
+}
+```
+
+- 已有数据库生成 typeorm 模型 [typeorm-model-generator](https://www.npmjs.com/package/typeorm-model-generator)
+
 ### NestJS 微服务
+
+通信方式
+
+- 默认 Http
+- Redis
+- MQTT
+- NATS
+- RabbitMQ
+- Kafka
+- gRPC
 
 #### 创建 monorepo 项目
