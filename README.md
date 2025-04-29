@@ -73,6 +73,7 @@
 - [vue 状态管理](./笔记/vue状态管理.md)
 - [vue3-smooth-dnd-ts](https://github.com/RyanLYC/vue3-smooth-dnd-ts)
 - [Pinia 相关](./VUE/pinia.md)
+- [Vue3 拖拽库](./VUE/拖拽库.md)
 
 ## React
 
