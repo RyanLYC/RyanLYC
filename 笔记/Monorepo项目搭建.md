@@ -6,6 +6,14 @@ pnpm init
 
 ### 禁用 npm 、 yarn
 
+```json
+{
+  "scripts": {
+    "preinstall": "node preinstall.js"
+  }
+}
+```
+
 ```js
 if (!/pnpm/.test(process.env.npm_execpath || "")) {
   console.error(
