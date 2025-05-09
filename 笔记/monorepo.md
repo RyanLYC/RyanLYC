@@ -57,6 +57,7 @@
 "workspaces":["packages/*"]
 ```
 
+- yarn add \*\*\* -W 全局安装包
 - 管理模块依赖可以使用 yarn workspace <module-name> add <module>;yarn 会自动管理的多个不同的包下面的不同的版本号的相同依赖名的依赖，
   如果与根目录中的依赖冲突，会默认的在该包下创建一个 node modules 的目录，并下载一份的依赖至该包中;
 - 模块还未发布时，使用 yarn 来关联本地依赖，可能会下载到别人创建的同名包名;
@@ -65,18 +66,19 @@
 
 ### pnpm workspaces 推荐使用这个
 
-### Monorepos
+### Monorepo 工具
 
-- yarn
+- yarn workspace
 - pnpm
 - lerna + nx
   - lerna 已经被 nx 团队维护，它们两者是共生关系！
 
-构建与云构建工具
+`构建与云构建工具`
 
 - nx 可生成关系图
   - NX 提供了一套全面的开发工具，强调代码重用和构建优化，而 Lerna 则专注于简化包的版本管理和发布流程。
 - turbo 是 nx 的 子集
+- Rush 微软出品的一个 monorepo 项目管理工具
 
 #### Lerna 常见命令及说明
 
