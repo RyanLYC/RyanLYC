@@ -29,9 +29,10 @@
 - [前端监控](./架构/前端监控.md) & [前端监控平台源码](https://github.com/RyanLYC/front-end-monitor) & [前端稳定性监控平台源码(增加拦截 xhr、fetch 请求、核心模块化)](https://github.com/RyanLYC/monitor)
 - [前端性能优化](./架构/前端性能优化.md)
 
-## 微前端
+## 微服务 & 分布式 & 微前端
 
 - [微前端-micro-app](./微前端/micro-app.md) & [项目源码](https://github.com/RyanLYC/micro-app)
+- [微服务 & 分布式](./微前端/微服务分布式.md)
 
 ## 知识积累
 
@@ -221,6 +222,11 @@
 
 - [monorepo](./笔记/monorepo.md) [Demo](https://github.com/RyanLYC/monorepo)
 - [Monorepo 项目搭建 - pnpm](./笔记/Monorepo项目搭建.md)
+- Lerna 管理包以及发布
+- 云构建工具
+  - nx
+  - turbo 是 nx 的子集
+  - Rush
 
 ## 部署
 
