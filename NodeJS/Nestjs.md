@@ -635,3 +635,16 @@ export class Roles {
 - gRPC
 
 #### 创建 monorepo 项目
+
+- 微服务-熔断器 opossum
+- docker compose 运行命令
+
+```shell
+#强制构建 不会运行 需要 docker compose up -d
+docker compose build --force-rm
+
+# 构建并运行
+docker compose up --build -d
+```
+
+- grpc 微服务通信 https://nest.nodejs.cn/microservices/grpc
