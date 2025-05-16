@@ -49,6 +49,52 @@
 npm create vue@latest
 ```
 
+### 响应式 Props 解构
+
+```html
+<!-- 父组件 -->
+<Child :count="0" :user="{name:'Vue'}" />
+
+<!-- 子组件 -->
+<script setup>
+  const { count = 0, user } = defineProps({
+    count: Number,
+    user: Object,
+  });
+  // 自动编译为 props.count / props.user
+</script>
+```
+
+### 核心 API 增强
+
+- useId() 生成 SSR/CSR 稳定唯一 ID 无障碍表单元素绑定
+- useTemplateRef() 动态 DOM 引用管理 动态组件/条件渲染场景
+- defineModel() 双向绑定革命性简化 表单组件开发
+
+### SSR 重大升级
+
+```ts
+// 惰性激活策略
+defineAsyncComponent({
+  loader: () => import("./Comp.vue"),
+  hydrate: hydrateOnVisible(), // 可视时激活
+});
+/**
+ * ​支持模式​：
+
+hydrateOnIdle：空闲时激活
+hydrateOnVisible：进入视窗激活
+自定义激活策略
+
+ */
+
+// <!-- 允许客户端与服务端渲染差异 -->
+// <span data-allow-mismatch="text">
+//   {{ dynamicContent }}
+// </span>
+// 支持属性级差异白名单配置
+```
+
 ### Vue3 Attribute 绑定
 
 - v-html
