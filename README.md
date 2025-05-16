@@ -57,6 +57,7 @@
   - app.onUnmount()用于注册清理函数
   - onScopeDispose 的 failSilently 参数
 
+- [vue3.5](./VUE/vue3.5详解.md)
 - [vue 3.4 版本](https://blog.vuejs.org/posts/vue-3-4) - [掘金中文](https://juejin.cn/post/7329280514627256361)
 - [vue3-CHANGELOG](https://github.com/vuejs/core/blob/main/CHANGELOG.md)
 - [vue3.4 项目模版](https://github.com/RyanLYC/vue3.4-template)
