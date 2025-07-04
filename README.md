@@ -79,6 +79,7 @@
 - [vue3-smooth-dnd-ts](https://github.com/RyanLYC/vue3-smooth-dnd-ts)
 - [Pinia 相关](./VUE/pinia.md)
 - [Vue3 拖拽库](./VUE/拖拽库.md)
+- [Vue3+Pinia+Vite+TypeScript H5 项目]
 - 常规面试题
   - [vue 组件间通信方式](./VUE/vue组件间传值方式.md)
   - [vue3 内置指令](https://cn.vuejs.org/api/built-in-directives.html#v-text)
