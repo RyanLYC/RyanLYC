@@ -1,5 +1,9 @@
 # 前端全栈进阶之路
 
+## 大前端(全新前端综合知识累积：2025-07)
+
+- [学习资源](./大前端/学习资源.md)
+
 ## 项目架构
 
 - [帮助文档](./架构/在线帮助文档.md) - to do
@@ -331,6 +335,7 @@
   - [ECharts](https://echarts.apache.org/zh/index.html)
   - [ECharts Demo 库](https://www.isqqw.com/)
   - [ECharts 封装库 DataV](http://datav.jiaminghi.com/)
+  - [DataV-vue3](https://datav-vue3.netlify.app/Guide/Guide.html) [github](https://github.com/vaemusic/datav-vue3)
   - [AntV](https://antv.antgroup.com/zh)
   - [D3](https://d3js.org/)
 - SVG & Canvas
