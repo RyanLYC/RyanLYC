@@ -46,11 +46,10 @@
 - [图片懒加载](https://github.com/RyanLYC/ImgLazyLoad)
 - [大文件上传](https://github.com/RyanLYC/file_upload)[后台](https://github.com/RyanLYC/koa-mongodb)
 - [网页置灰方案](https://github.com/RyanLYC/pagegray)
-
+- [前端如何让图片、视频、pdf等文件在浏览器直接下载而非预览]()
 ## Vue
 
 - [vue 3.5 版本]( Alpha 阶段)
-
   - 响应式属性解构
     - ​**内存占用减少 56%​**​：采用版本计数与双向链表数据结构
     - ​**数组追踪优化**​：深度响应式数组操作性能提升 10 倍
@@ -202,7 +201,8 @@
 - [mongoDB](./NodeJS/mongoDB.md)
 - [RBAC(role based access control)根据角色完成权限的控制](./NodeJS/RBAC.md)
 - [业务链路](./NodeJS/业务链路.md)
-- [Nestjs](./NodeJS/Nestjs.md) - [项目源码]()
+- [Nestjs 基础](./NodeJS/Nestjs-basic.md) - [项目源码]()
+- [Nestjs 拔高](./NodeJS/Nestjs.md) - [项目源码]()
 
 ## 手写代码
 
@@ -282,7 +282,7 @@
 - [HTTP 缓存 & 本地缓存](./笔记/缓存.md)
 - [JS 垃圾回收、event-loop](./笔记/JS垃圾回收.md)
 - [浏览器事件详解](./笔记/浏览器事件详解.md)
-- [浏览器的一个请求从发送到返回都经历了什么？](./面试题/网络相关/浏览器的一个请求从发送到返回都经历了什么.md)
+- [从输入URL到页面展示全流程](./面试题/网络相关/浏览器的一个请求从发送到返回都经历了什么.md)
 - [浏览器页面的渲染阶段?](./面试题/网络相关/浏览器页面的渲染阶段.md)
 - [cookie、session、localStorage、sessionStorage?](./面试题/网络相关/存储.md)
 - [http 状态码](./面试题/网络相关/http状态码.md)
