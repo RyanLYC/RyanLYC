@@ -637,3 +637,11 @@ services:
 
 # pnpm install --save @nestjs/typeorm typeorm mysql2
 ```
+
+`typeorm-model-generator 库 用于现有数据库生成typeorm的model`
+
+### 日志收集
+
+第三方日志 `nest-winston` `nestjs-pino`
+
+`nestjs 日志模块`
