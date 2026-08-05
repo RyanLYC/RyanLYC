@@ -448,7 +448,21 @@ npm install --save-dev @iconify/vue
 # Radix Vue 组件库 https://www.radix-vue.com/
 ```
 
-### 文心一言 千问
+### 千问模型
+
+`阿里云百炼`
+`模型广场` https://bailian.console.aliyun.com/cn-beijing?spm=5176.12818093_47.overview_recent.1.63092cc96CbHsP&tab=model#/model-market
+
+```js
+OpenAI(
+    # 建议将API Key配置到环境变量中，避免硬编码泄露风险
+    api_key=os.getenv("DASHSCOPE_API_KEY"),
+    # 华北2（北京）地域的 Base URL
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+```
+
+### 文心一言 千问 Demo
 
 ```js
 // 百度文心一言

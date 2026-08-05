@@ -47,6 +47,7 @@
 - [大文件上传](https://github.com/RyanLYC/file_upload)[后台](https://github.com/RyanLYC/koa-mongodb)
 - [网页置灰方案](https://github.com/RyanLYC/pagegray)
 - [前端如何让图片、视频、pdf等文件在浏览器直接下载而非预览]()
+
 ## Vue
 
 - [vue 3.5 版本]( Alpha 阶段)
@@ -203,6 +204,7 @@
 - [业务链路](./NodeJS/业务链路.md)
 - [Nestjs 基础](./NodeJS/Nestjs-basic.md) - [项目源码]()
 - [Nestjs 拔高](./NodeJS/Nestjs.md) - [项目源码]()
+- [Electron项目对接千问、文心、DeepSeek大模型](./Electron/ElectronVue3.5.md) - [项目源码(https://github.com/RyanLYC/aichat)]
 
 ## 手写代码
 
